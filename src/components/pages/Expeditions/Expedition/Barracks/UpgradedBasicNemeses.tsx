@@ -4,6 +4,7 @@ import * as types from 'aer-types/types'
 
 import ExpansionPanel from 'components/molecules/ExpansionPanel'
 import UpgradedBasicNemesisCards from 'components/molecules/UpgradedBasicNemesisCardList'
+import { t } from 'i18n'
 
 type Props = {
   upgradedBasicNemsisCards: types.UpgradedBasicNemesisCard[]
@@ -24,7 +25,7 @@ const UpgradedBasicNemeses = ({
   <React.Fragment>
     {upgradedBasicNemsisCards.length > 0 && (
       <ExpansionPanel
-        summary="Upgraded basic nemesis cards"
+        summary={t('expeditions.expedition.upgradedBasicNemesisCards')}
         expansionKey={expansionKey}
         expansionHandler={expansionHandler}
         expanded={expanded}

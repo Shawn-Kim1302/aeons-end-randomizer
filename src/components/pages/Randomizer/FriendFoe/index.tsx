@@ -11,27 +11,36 @@ import FriendTile from './FriendTile'
 import FoeTile from './FoeTile'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => {
   const friendId = selectors.Randomizer.FriendFoe.getFriend(state)
   const foeId = selectors.Randomizer.FriendFoe.getFoe(state)
   const bannerIds = selectors.Randomizer.FriendFoe.getBanners(state)
   return {
-    playerCount: selectors.TurnOrder.Configuration.getSelectedPlayerCount(
-      state
+    playerCount:
+      selectors.TurnOrder.Configuration.getSelectedPlayerCount(state),
+    availableFriends:
+      selectors.Settings.Expansions.getSelectedFriendsForSelectedExpansions(
+        state
+      ),
+    availableFoes:
+      selectors.Settings.Expansions.getSelectedFoesForSelectedExpansions(state),
+    availableBanners:
+      selectors.Settings.Expansions.getSelectedBannersForSelectedExpansions(
+        state
+      ),
+    friend:
+      friendId &&
+      selectors.Settings.Expansions.Friends.content.getById(state, {
+        id: friendId,
+      }),
+    foe:
+      foeId &&
+      selectors.Settings.Expansions.Foes.content.getById(state, { id: foeId }),
+    banners: bannerIds?.map((id: string) =>
+      selectors.Settings.Expansions.Banners.content.getById(state, { id })
     ),
-    availableFriends: selectors.Settings.Expansions.getSelectedFriendsForSelectedExpansions(
-      state
-    ),
-    availableFoes: selectors.Settings.Expansions.getSelectedFoesForSelectedExpansions(
-      state
-    ),
-    availableBanners: selectors.Settings.Expansions.getSelectedBannersForSelectedExpansions(
-      state
-    ),
-    friend: friendId && selectors.Settings.Expansions.Friends.content.getById(state, {id: friendId}),
-    foe: foeId && selectors.Settings.Expansions.Foes.content.getById(state, {id: foeId}),
-    banners: bannerIds?.map((id: string) => selectors.Settings.Expansions.Banners.content.getById(state, {id})),
   }
 }
 
@@ -64,7 +73,11 @@ const FriendFoe = ({
   setFriend,
   setFoe,
 }: Props) => {
-  if (!availableFriends.length && !availableFoes.length && !availableBanners.length) {
+  if (
+    !availableFriends.length &&
+    !availableFoes.length &&
+    !availableBanners.length
+  ) {
     return <NoSelectedFriendFoeModuleMaterial />
   }
   const randomizeFriend = () => {
@@ -84,38 +97,71 @@ const FriendFoe = ({
     randomizeBanners()
   }
   const noCardsRolled = !friend && !foe && !banners
-  return <>
-    <PlayerCountSelection>
-      <span>
-        <Button variant="contained" disabled={!availableFriends.length} onClick={randomizeFriend}>Roll Friend</Button>
-        <Button variant="contained" disabled={!availableFoes.length} onClick={randomizeFoe}>Roll Foe</Button>
-        <Button variant="contained" disabled={!availableBanners.length} onClick={randomizeBanners}>Roll Banners</Button>
-      </span>
-    </PlayerCountSelection>
-    {noCardsRolled ? (
-      <EmptyHint>Tap button to draw friends, foes, and banners!</EmptyHint>
-    ) : <>
-      {(friend || foe) && <FriendFoeWrapper>
-        <Grid container spacing={16}>
-          {friend && <FriendTile friend={friend} />}
-          {foe && <FoeTile foe={foe} />}
-        </Grid>
-      </FriendFoeWrapper>}
-    {banners && <SupplyList tiles={banners.map((banner) => {return {...banner, canBeLocked: false}})} />}
-    </>
-    }
-    
-    <ShuffleButton
+  return (
+    <>
+      <PlayerCountSelection>
+        <span>
+          <Button
+            variant="contained"
+            disabled={!availableFriends.length}
+            onClick={randomizeFriend}
+          >
+            {t('randomizer.rollFriend')}
+          </Button>
+          <Button
+            variant="contained"
+            disabled={!availableFoes.length}
+            onClick={randomizeFoe}
+          >
+            {t('randomizer.rollFoe')}
+          </Button>
+          <Button
+            variant="contained"
+            disabled={!availableBanners.length}
+            onClick={randomizeBanners}
+          >
+            {t('randomizer.rollBanners')}
+          </Button>
+        </span>
+      </PlayerCountSelection>
+      {noCardsRolled ? (
+        <EmptyHint>{t('randomizer.drawFriendFoeHint')}</EmptyHint>
+      ) : (
+        <>
+          {(friend || foe) && (
+            <FriendFoeWrapper>
+              <Grid container spacing={16}>
+                {friend && <FriendTile friend={friend} />}
+                {foe && <FoeTile foe={foe} />}
+              </Grid>
+            </FriendFoeWrapper>
+          )}
+          {banners && (
+            <SupplyList
+              tiles={banners.map((banner) => {
+                return { ...banner, canBeLocked: false }
+              })}
+            />
+          )}
+        </>
+      )}
+
+      <ShuffleButton
         onClick={randomizeAll}
         color="primary"
         variant="extended"
-        disabled={!availableFriends.length || !availableFoes.length || !availableBanners.length}
+        disabled={
+          !availableFriends.length ||
+          !availableFoes.length ||
+          !availableBanners.length
+        }
         withBottomNav={true}
       >
-        Draw everything
+        {t('randomizer.drawEverything')}
       </ShuffleButton>
-  </>
-} 
+    </>
+  )
+}
 
 export default connect(
   mapStateToProps,

@@ -9,34 +9,35 @@ import ShuffleButton from 'components/atoms/ShuffleButton'
 import EmptyHint from './EmptyHint'
 import PlayerCountSelection from 'components/molecules/PlayerCountSelection'
 import Tier from './Tier'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => {
-  const basicNemesisCardIds = selectors.Randomizer.BasicNemesisCards.RandomCards.getBasicNemesisCards(
-    state
-  )
+  const basicNemesisCardIds =
+    selectors.Randomizer.BasicNemesisCards.RandomCards.getBasicNemesisCards(
+      state
+    )
 
   return {
-    hasStandaloneExpansionSelected: selectors.Settings.Expansions.Expansions.getHasStandaloneExpansion(
-      state
-    ),
-    availableBasicNemesisCards: selectors.Settings.Expansions.getSelectedBasicNemesisCardsForSelectedExpansions(
-      state
-    ),
-    playerCount: selectors.TurnOrder.Configuration.getSelectedPlayerCount(
-      state
-    ),
+    hasStandaloneExpansionSelected:
+      selectors.Settings.Expansions.Expansions.getHasStandaloneExpansion(state),
+    availableBasicNemesisCards:
+      selectors.Settings.Expansions.getSelectedBasicNemesisCardsForSelectedExpansions(
+        state
+      ),
+    playerCount:
+      selectors.TurnOrder.Configuration.getSelectedPlayerCount(state),
     randomBasicNemesisCards: {
-      Tier1: basicNemesisCardIds.Tier1.map(basicNemesisCardId =>
+      Tier1: basicNemesisCardIds.Tier1.map((basicNemesisCardId) =>
         selectors.Settings.Expansions.BasicNemesisCards.content.getById(state, {
           id: basicNemesisCardId.id,
         })
       ),
-      Tier2: basicNemesisCardIds.Tier2.map(basicNemesisCardId =>
+      Tier2: basicNemesisCardIds.Tier2.map((basicNemesisCardId) =>
         selectors.Settings.Expansions.BasicNemesisCards.content.getById(state, {
           id: basicNemesisCardId.id,
         })
       ),
-      Tier3: basicNemesisCardIds.Tier3.map(basicNemesisCardId =>
+      Tier3: basicNemesisCardIds.Tier3.map((basicNemesisCardId) =>
         selectors.Settings.Expansions.BasicNemesisCards.content.getById(state, {
           id: basicNemesisCardId.id,
         })
@@ -76,19 +77,19 @@ const BasicNemesisCards = ({
     <React.Fragment>
       <PlayerCountSelection />
       {noCardsRolled ? (
-        <EmptyHint>Tab button to draw new basic nemesis cards!</EmptyHint>
+        <EmptyHint>{t('randomizer.drawBasicNemesisCardsHint')}</EmptyHint>
       ) : (
         <>
           <Tier
-            title="Tier 1"
+            title={t('randomizer.tier1')}
             basicNemesisCards={randomBasicNemesisCards.Tier1}
           />
           <Tier
-            title="Tier 2"
+            title={t('randomizer.tier2')}
             basicNemesisCards={randomBasicNemesisCards.Tier2}
           />
           <Tier
-            title="Tier 3"
+            title={t('randomizer.tier3')}
             basicNemesisCards={randomBasicNemesisCards.Tier3}
           />
         </>
@@ -100,7 +101,7 @@ const BasicNemesisCards = ({
         variant="extended"
         withBottomNav={true}
       >
-        Draw basic nemesis cards
+        {t('randomizer.drawBasicNemesisCards')}
       </ShuffleButton>
     </React.Fragment>
   )

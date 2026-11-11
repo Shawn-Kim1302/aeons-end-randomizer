@@ -2,6 +2,7 @@ import React from 'react'
 import CopyIcon from '@material-ui/icons/FileCopy'
 
 import IconButton from 'components/atoms/IconButton'
+import { t } from 'i18n'
 
 type Props = {
   onClick: (...args: any) => void
@@ -11,7 +12,7 @@ type Props = {
 const CopyButton = ({ onClick, className, ...rest }: Props) => (
   <IconButton
     color="primary"
-    aria-label="Copy"
+    aria-label={t('common.copy')}
     onClick={onClick}
     className={className}
     {...rest}

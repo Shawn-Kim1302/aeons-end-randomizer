@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { RootState, selectors, actions } from 'Redux/Store'
 
 import CardListItem from './CardListItem'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState, props: { expansionId: string }) => ({
   selectedSpells: selectors.Settings.Expansions.Cards.getSpellsByExpansionId(
@@ -27,7 +28,7 @@ const Spells = ({ selectedSpells, handleSpellChange }: Props) => (
       <CardListItem
         entities={selectedSpells}
         handleCheckboxChange={handleSpellChange}
-        label="Spells"
+        label={t('settings.content.spells')}
       />
     )}
   </React.Fragment>

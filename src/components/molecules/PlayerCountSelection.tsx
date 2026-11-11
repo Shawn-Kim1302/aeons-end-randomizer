@@ -11,6 +11,7 @@ import RadioGroup from '@material-ui/core/RadioGroup'
 
 import AERData from 'aer-data/src/index'
 import { RootState, actions, selectors } from 'Redux/Store'
+import { t } from 'i18n'
 
 const renderPlayerCountOptions = () =>
   Object.values(AERData.turnordersetups).map((playerCount) => (
@@ -23,16 +24,16 @@ const renderPlayerCountOptions = () =>
   ))
 
 const mapStateToProps = (state: RootState) => ({
-  selectedPlayerCount: selectors.TurnOrder.Configuration.getSelectedPlayerCount(
-    state
-  ),
+  selectedPlayerCount:
+    selectors.TurnOrder.Configuration.getSelectedPlayerCount(state),
 })
 
 const mapDispatchToProps = {
   selectPlayerCount: actions.TurnOrder.Configuration.selectPlayerCount,
 }
 
-type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & {children?: React.ReactNode}
+type Props = ReturnType<typeof mapStateToProps> &
+  typeof mapDispatchToProps & { children?: React.ReactNode }
 
 const Control = ({
   children,
@@ -40,11 +41,18 @@ const Control = ({
   selectedPlayerCount,
 }: Props) => (
   <Card>
-    <CardContent style={{display: "flex", flexDirection:"row", flexWrap: "wrap", alignItems:"center"}}>
+    <CardContent
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+      }}
+    >
       <FormControl component={'fieldset' as 'div'}>
-        <FormLabel>Amount of Players</FormLabel>
+        <FormLabel>{t('players.amountOfPlayers')}</FormLabel>
         <RadioGroup
-          aria-label="Players"
+          aria-label={t('players.players')}
           name="turnOrderPlayerCountOptions"
           value={selectedPlayerCount.id}
           onChange={(event: React.ChangeEvent<any>) => {
@@ -60,7 +68,4 @@ const Control = ({
   </Card>
 )
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(React.memo(Control))
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Control))

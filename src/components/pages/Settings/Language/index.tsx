@@ -1,9 +1,11 @@
 import React from 'react'
 
 import useExpansionHandling from 'hooks/useExpansionHandling'
+import { t } from 'i18n'
 
 import ExpansionPanel from 'components/molecules/ExpansionPanel'
 import GameLanguageSelection from './GameLanguageSelection/GameLanguageSelection'
+import UiLanguageSelection from './UiLanguageSelection'
 
 const Language = () => {
   const { expanded, createExpansionHandler } = useExpansionHandling()
@@ -15,10 +17,13 @@ const Language = () => {
       expanded={expanded}
       expansionHandler={expansionHandler}
       expansionKey={expansionKey}
-      summary="Language Selection"
+      summary={t('settings.languageSelection')}
       data-test="LanguageSelection"
     >
-      <GameLanguageSelection />
+      <div>
+        <UiLanguageSelection />
+        <GameLanguageSelection />
+      </div>
     </ExpansionPanel>
   )
 }

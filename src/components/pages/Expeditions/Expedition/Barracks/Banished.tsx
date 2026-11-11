@@ -2,6 +2,7 @@ import React from 'react'
 
 import ExpansionPanel from '../../../../molecules/ExpansionPanel'
 import SupplyList, { OptionalTile } from '../../../../molecules/SupplyList'
+import { t } from 'i18n'
 
 type Props = {
   banishedCards: OptionalTile[]
@@ -22,7 +23,7 @@ const Banished = ({
   <React.Fragment>
     {banishedCards.length > 0 && (
       <ExpansionPanel
-        summary="Banished"
+        summary={t('expeditions.expedition.banished')}
         expansionKey={expansionKey}
         expansionHandler={expansionHandler}
         expanded={expanded}

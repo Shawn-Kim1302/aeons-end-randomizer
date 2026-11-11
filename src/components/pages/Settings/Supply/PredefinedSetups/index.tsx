@@ -7,6 +7,7 @@ import { RootState, actions, selectors } from 'Redux/Store'
 import ListWrapper from 'components/molecules/ListWrapper'
 
 import CheckboxWithPreview from '../CheckboxWithPreview'
+import { t } from 'i18n'
 
 export type ChangeHandler = (id: string) => void
 
@@ -42,7 +43,7 @@ const PredefinedSetups = ({ predefinedSetups, toggleSetup }: Props) => {
 
   return (
     <React.Fragment>
-      <ListWrapper label="Predefined Setups">
+      <ListWrapper label={t('settings.supply.predefinedSetups')}>
         <React.Fragment>
           {renderCheckboxes(predefinedSetups, handleSelection)}
         </React.Fragment>

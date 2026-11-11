@@ -10,19 +10,20 @@ import ShuffleButton from 'components/atoms/ShuffleButton'
 
 import MageCountPicker from './MageCountPicker'
 import EmptyMageListHint from './EmptyMageListHint'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => {
   const mageIds = selectors.Randomizer.Mages.Recruited.getMages(state)
 
   return {
-    hasStandaloneExpansionSelected: selectors.Settings.Expansions.Expansions.getHasStandaloneExpansion(
-      state
-    ),
-    availableMages: selectors.Settings.Expansions.getSelectedMagesForSelectedExpansions(
-      state
-    ),
+    hasStandaloneExpansionSelected:
+      selectors.Settings.Expansions.Expansions.getHasStandaloneExpansion(state),
+    availableMages:
+      selectors.Settings.Expansions.getSelectedMagesForSelectedExpansions(
+        state
+      ),
     mageCount: selectors.Randomizer.Mages.Count.getCount(state),
-    mages: mageIds.map(mageId =>
+    mages: mageIds.map((mageId) =>
       selectors.Settings.Expansions.Mages.content.getById(state, {
         id: mageId.id,
       })
@@ -66,7 +67,9 @@ const Mages = ({
         handleAmountChange={handleAmountChange}
       />
       {noMagesGeneratedYet ? (
-        <EmptyMageListHint>Tap button to recruit mages</EmptyMageListHint>
+        <EmptyMageListHint>
+          {t('randomizer.recruitMagesHint')}
+        </EmptyMageListHint>
       ) : (
         <MageList mages={mages} />
       )}
@@ -76,7 +79,7 @@ const Mages = ({
         variant="extended"
         withBottomNav={true}
       >
-        Recruit Mages
+        {t('randomizer.recruitMages')}
       </ShuffleButton>
     </React.Fragment>
   )

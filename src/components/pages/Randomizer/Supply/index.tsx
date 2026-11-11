@@ -8,6 +8,7 @@ import SupplyList from 'components/molecules/SupplyList'
 import MarketSelect from 'components/molecules/MarketSelect'
 
 import ShuffleButton from 'components/atoms/ShuffleButton'
+import { t } from 'i18n'
 
 const getCustomAndPredefined =
   selectors.Settings.SupplySetups.makeGetCustomAndPredefined()
@@ -99,7 +100,7 @@ const Supply = ({
         withBottomNav={true}
         data-test="btn-create-market"
       >
-        Create Market
+        {t('randomizer.createMarket')}
       </ShuffleButton>
     </React.Fragment>
   )

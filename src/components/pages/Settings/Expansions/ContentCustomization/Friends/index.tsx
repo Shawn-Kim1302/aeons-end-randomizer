@@ -7,6 +7,7 @@ import { RootState, selectors, actions } from 'Redux/Store'
 import ListWrapper from 'components/molecules/ListWrapper'
 
 import Checkbox from './Checkbox'
+import { t } from 'i18n'
 
 export type ChangeHandler = (id: string) => void
 
@@ -19,10 +20,8 @@ const renderCheckboxes = (
   ))
 
 const mapStateToProps = (state: RootState, props: { expansionId: string }) => ({
-  selectedFriends: selectors.Settings.Expansions.Friends.getFriendsByExpansionId(
-    state,
-    props
-  ),
+  selectedFriends:
+    selectors.Settings.Expansions.Friends.getFriendsByExpansionId(state, props),
 })
 
 const mapDispatchToProps = {
@@ -38,7 +37,7 @@ const Friends = ({ selectedFriends, handleFriendChange }: Props) => {
   return (
     <React.Fragment>
       {selectedFriends.length > 0 && (
-        <ListWrapper label="Friends">
+        <ListWrapper label={t('settings.content.friends')}>
           <React.Fragment>
             {renderCheckboxes(selectedFriends, handleFriendChange)}
           </React.Fragment>

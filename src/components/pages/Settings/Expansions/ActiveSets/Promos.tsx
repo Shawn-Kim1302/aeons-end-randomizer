@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { RootState, selectors } from '../../../../../Redux/Store'
 
 import ExpansionList, { ChangeHandler } from './ExpansionList'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => ({
   promos: selectors.Settings.Expansions.Expansions.getPromos(state),
@@ -18,7 +19,7 @@ type Props = ReturnType<typeof mapStateToProps> &
 
 const Standalones = ({ promos, handleChange }: Props) => (
   <ExpansionList
-    label="Promos"
+    label={t('settings.promos')}
     expansions={promos}
     handleChange={handleChange}
   />

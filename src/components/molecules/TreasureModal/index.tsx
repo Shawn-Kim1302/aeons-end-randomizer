@@ -13,11 +13,11 @@ import Body from 'components/molecules/TreasureInformation'
 
 import ModalBodyWrapper from 'components/atoms/ModalBodyWrapper'
 import P from 'components/atoms/P'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState, _: any) => ({
-  expansions: selectors.Settings.Expansions.Expansions.content.getContent(
-    state
-  ),
+  expansions:
+    selectors.Settings.Expansions.Expansions.content.getContent(state),
 })
 
 type Props = ReturnType<typeof mapStateToProps> & {
@@ -40,7 +40,7 @@ const TreasureModal = React.memo(
               expansionName={expansions.ENG[card.expansion].name || ''}
             />
           ) : (
-            <P>No content</P>
+            <P>{t('common.noContent')}</P>
           )}
         </ModalBodyWrapper>
       </RenderModal>

@@ -5,6 +5,7 @@ import InfoIcon from '@material-ui/icons/Info'
 import List from '@material-ui/core/List'
 
 import Link from './Link'
+import { t } from 'i18n'
 
 type Props = {
   clickHandler: () => void
@@ -12,23 +13,27 @@ type Props = {
 
 const Navigation = ({ clickHandler }: Props) => (
   <List>
-    <Link text="Randomizer" to="/randomizer/nemesis" onClick={clickHandler}>
+    <Link
+      text={t('nav.randomizer')}
+      to="/randomizer/nemesis"
+      onClick={clickHandler}
+    >
       <i className="ra ra-lg ra-perspective-dice-random" />
     </Link>
-    <Link text="Turn Order" to="/turnorder" onClick={clickHandler}>
+    <Link text={t('nav.turnOrder')} to="/turnorder" onClick={clickHandler}>
       <i className="ra ra-lg ra-player-lift" />
     </Link>
-    <Link text="Expeditions" to="/expeditions" onClick={clickHandler}>
+    <Link text={t('nav.expeditions')} to="/expeditions" onClick={clickHandler}>
       <i className="ra ra-lg ra-raven" />
     </Link>
-    <Link text="Settings" to="/settings" onClick={clickHandler}>
+    <Link text={t('nav.settings')} to="/settings" onClick={clickHandler}>
       <BuildIcon
         style={{
           width: '0.9em',
         }}
       />
     </Link>
-    <Link text="About" to="/about" onClick={clickHandler}>
+    <Link text={t('nav.about')} to="/about" onClick={clickHandler}>
       <InfoIcon
         style={{
           width: '0.9em',

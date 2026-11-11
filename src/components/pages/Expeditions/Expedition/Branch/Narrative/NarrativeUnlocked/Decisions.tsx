@@ -5,6 +5,7 @@ import * as types from 'aer-types/types'
 import { RootState, actions } from 'Redux/Store'
 
 import DecisionButton from 'components/pages/Expeditions/Expedition/Branch/Narrative/NarrativeUnlocked/DecisionButton'
+import { t } from 'i18n'
 
 const renderDecisions = (
   decisions: string[],
@@ -66,7 +67,10 @@ const Decisions = ({
       {decisions ? (
         renderDecisions(decisions, clickHandler)
       ) : (
-        <DecisionButton label="Finish Expedition" handleClick={finishHandler} />
+        <DecisionButton
+          label={t('expeditions.branch.finishExpedition')}
+          handleClick={finishHandler}
+        />
       )}
     </>
   )

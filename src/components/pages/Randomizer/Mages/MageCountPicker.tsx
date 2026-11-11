@@ -1,6 +1,7 @@
 import React from 'react'
 
 import AmountPicker from 'components/molecules/AmountPicker'
+import { t } from 'i18n'
 
 type Props = {
   selectedValue: string
@@ -9,7 +10,7 @@ type Props = {
 
 const MageCountPicker = ({ selectedValue, handleAmountChange }: Props) => (
   <AmountPicker
-    label="Amount of Mages"
+    label={t('randomizer.amountOfMages')}
     selectedValue={selectedValue}
     handleAmountChange={handleAmountChange}
     optionsCount={4}

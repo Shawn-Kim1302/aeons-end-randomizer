@@ -9,6 +9,7 @@ import { useModal } from 'hooks/useModal'
 import ModalBodyWrapper from 'components/atoms/ModalBodyWrapper'
 
 import CustomSetupEdit from '../CustomSetupEdit'
+import { t } from 'i18n'
 
 const createSetup = (): types.IMarketSetup => {
   return {
@@ -48,18 +49,18 @@ const SetupCreation = () => {
         onClick={handleCreation}
         data-test="btn-add-custom-supply-setup"
       >
-        Add
+        {t('common.add')}
       </Button>
       <RenderEditModal
         titleColor="#333"
-        titleLabel="New Setup"
+        titleLabel={t('settings.supply.newSetup')}
         closeCallback={handleEditCancel}
       >
         <ModalBodyWrapper>
           {newSetup ? (
             <CustomSetupEdit setup={newSetup} saveCallback={hideEditModal} />
           ) : (
-            'Error'
+            t('common.error')
           )}
         </ModalBodyWrapper>
       </RenderEditModal>

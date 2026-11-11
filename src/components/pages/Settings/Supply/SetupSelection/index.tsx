@@ -11,6 +11,7 @@ import { RootState, actions, selectors } from '../../../../../Redux/Store'
 import CustomSetups from '../CustomSetups'
 import PredefinedSetups from '../PredefinedSetups'
 import SetupSelectionWrapper from './Wrapper'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => ({
   allSetsSelected: selectors.Settings.SupplySetups.getAllSetsSelected(state),
@@ -32,10 +33,16 @@ const SetupSelection = ({ allSetsSelected, toggleAll }: Props) => {
             <Checkbox
               checked={allSetsSelected}
               onChange={toggleAll}
-              value={allSetsSelected ? 'Deselect All' : 'Select All'}
+              value={
+                allSetsSelected
+                  ? t('common.deselectAll')
+                  : t('common.selectAll')
+              }
             />
           }
-          label={allSetsSelected ? 'Deselect All' : 'Select All'}
+          label={
+            allSetsSelected ? t('common.deselectAll') : t('common.selectAll')
+          }
         />
       </FormGroup>
       <CustomSetups />

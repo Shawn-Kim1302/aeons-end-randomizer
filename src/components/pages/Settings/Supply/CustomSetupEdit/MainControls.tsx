@@ -7,6 +7,7 @@ import * as types from 'aer-types/types'
 
 import InputField from './InputField'
 import MainControlsWrapper from './MainControlsWrapper'
+import { t } from 'i18n'
 
 type Props = {
   bluePrintList: types.IBluePrint[]
@@ -29,8 +30,8 @@ const MainControls = ({
     <MainControlsWrapper>
       <InputField
         id="setup-name"
-        label="Setup Name"
-        placeholder="Setup Name"
+        label={t('settings.supply.setupName')}
+        placeholder={t('settings.supply.setupName')}
         value={setupName}
         onChange={(e) => setSetupName(e.currentTarget.value)}
         margin="normal"
@@ -38,7 +39,7 @@ const MainControls = ({
       />
       <IconButton
         color="primary"
-        aria-label="Save"
+        aria-label={t('common.save')}
         onClick={() =>
           saveCustomSetup({ ...setup, name: setupName, tiles: bluePrintList })
         }
@@ -48,7 +49,7 @@ const MainControls = ({
       </IconButton>
       <IconButton
         color="secondary"
-        aria-label="Cancel"
+        aria-label={t('common.cancel')}
         onClick={() => cancelEdit(setup.id)}
         data-test="btn-cancel-edit-custom-supply-setup"
       >

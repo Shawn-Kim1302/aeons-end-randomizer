@@ -3,6 +3,7 @@ import MuiTooltip from '@material-ui/core/Tooltip'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import InfoIcon from '@material-ui/icons/Info'
 import IconButton from 'components/atoms/IconButton'
+import { t } from 'i18n'
 
 type Props = {
   children: React.ReactChild
@@ -39,7 +40,7 @@ const Tooltip = ({ children }: Props) => {
       >
         <IconButton
           color="primary"
-          aria-label="Show language select info"
+          aria-label={t('settings.showLanguageInfo')}
           onClick={handleTooltipOpen}
         >
           <InfoIcon />

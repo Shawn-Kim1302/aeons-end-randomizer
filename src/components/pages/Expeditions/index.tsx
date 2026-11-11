@@ -9,11 +9,11 @@ import ShuffleButton from '../../atoms/ShuffleButton'
 import ExpeditionList from './ExpeditionList'
 import CreationDialog from './CreationDialog'
 import Text from 'components/pages/Expeditions/Expedition/Branch/Narrative/NarrativeUnlocked/Text'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => ({
-  hasStandaloneExpansionSelected: selectors.Settings.Expansions.Expansions.getHasStandaloneExpansion(
-    state
-  ),
+  hasStandaloneExpansionSelected:
+    selectors.Settings.Expansions.Expansions.getHasStandaloneExpansion(state),
 })
 
 const mapDispatchToProps = {}
@@ -26,17 +26,15 @@ const Expeditions = ({ hasStandaloneExpansionSelected }: Props) => {
   return (
     <React.Fragment>
       {!hasStandaloneExpansionSelected && (
-        <Text color="error">
-          Note: You currently do not have any standalone expansions selected.
-          You can still import expeditions, but just creating an expedition,
-          will leave it blank. To be able to create regular expeditions activate
-          at least one stand alone expansion inside the settings.
-        </Text>
+        <Text color="error">{t('expeditions.noStandaloneNote')}</Text>
       )}
 
       <ExpeditionList />
 
-      <RenderModal titleColor="#333" titleLabel="New Expedition">
+      <RenderModal
+        titleColor="#333"
+        titleLabel={t('expeditions.newExpedition')}
+      >
         <CreationDialog finisher={hide} />
       </RenderModal>
 
@@ -46,7 +44,7 @@ const Expeditions = ({ hasStandaloneExpansionSelected }: Props) => {
         variant="extended"
         data-test="btn-start-expedition"
       >
-        Start new expedition
+        {t('expeditions.startNewExpedition')}
       </ShuffleButton>
     </React.Fragment>
   )

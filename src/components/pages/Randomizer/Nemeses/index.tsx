@@ -11,17 +11,18 @@ import NoSelectedExpansions from 'components/molecules/NoSelectedExpansions'
 
 import NemesisModal from 'components/molecules/NemesisModal'
 import { useModal } from 'hooks/useModal'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => {
   const nemesis = selectors.Randomizer.Nemesis.getNemesis(state)
 
   return {
-    hasStandaloneExpansionSelected: selectors.Settings.Expansions.Expansions.getHasStandaloneExpansion(
-      state
-    ),
-    availableNemeses: selectors.Settings.Expansions.getSelectedNemesesForSelectedExpansions(
-      state
-    ),
+    hasStandaloneExpansionSelected:
+      selectors.Settings.Expansions.Expansions.getHasStandaloneExpansion(state),
+    availableNemeses:
+      selectors.Settings.Expansions.getSelectedNemesesForSelectedExpansions(
+        state
+      ),
     randomNemesis: nemesis
       ? selectors.Settings.Expansions.Nemeses.content.getById(state, {
           id: nemesis.id,
@@ -66,7 +67,7 @@ const Nemeses = ({
           showNemesisDetails={handleNemesisDetails}
         />
       ) : (
-        <EmptyNemesisHint>Tab button to spawn new nemesis!</EmptyNemesisHint>
+        <EmptyNemesisHint>{t('randomizer.spawnNemesisHint')}</EmptyNemesisHint>
       )}
       <ShuffleButton
         onClick={handleRandomization}
@@ -74,7 +75,7 @@ const Nemeses = ({
         variant="extended"
         withBottomNav={true}
       >
-        Open Breach
+        {t('randomizer.openBreach')}
       </ShuffleButton>
       <NemesisModal id={modalContentId} RenderModal={RenderModal} />
     </React.Fragment>

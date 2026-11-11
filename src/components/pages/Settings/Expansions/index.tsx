@@ -6,6 +6,7 @@ import { RootState, actions, selectors } from 'Redux/Store'
 import ExpansionPanel from 'components/molecules/ExpansionPanel'
 
 import ActiveSets from './ActiveSets'
+import { t } from 'i18n'
 
 const KEY = 'expansions'
 
@@ -23,16 +24,17 @@ const mapDispatchToProps = {
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & {}
 
 const Expansions = ({ accordionState, toggleAccordion }: Props) => {
-  const expansionHandler = useCallback(() => toggleAccordion(KEY), [
-    toggleAccordion,
-  ])
+  const expansionHandler = useCallback(
+    () => toggleAccordion(KEY),
+    [toggleAccordion]
+  )
 
   return (
     <ExpansionPanel
       expanded={accordionState}
       expansionKey="expansions"
       expansionHandler={expansionHandler}
-      summary="Expansions"
+      summary={t('settings.expansions')}
       data-test="Expansions"
     >
       <ActiveSets />

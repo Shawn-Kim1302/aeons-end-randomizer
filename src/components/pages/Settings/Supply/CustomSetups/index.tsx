@@ -8,6 +8,7 @@ import ListWrapper from 'components/molecules/ListWrapper'
 
 import CustomSetupCheckbox from './Checkbox'
 import SetupCreation from './SetupCreation'
+import { t } from 'i18n'
 
 export type ChangeHandler = (id: string) => void
 
@@ -55,12 +56,13 @@ const CustomSetups = ({
   deleteSetup,
   cancelEdit,
 }: Props) => {
-  const handleSelection = useCallback((item) => toggleSetup(item, 'Custom'), [
-    toggleSetup,
-  ])
+  const handleSelection = useCallback(
+    (item) => toggleSetup(item, 'Custom'),
+    [toggleSetup]
+  )
 
   return (
-    <ListWrapper label="Custom Setups">
+    <ListWrapper label={t('settings.supply.customSetups')}>
       <React.Fragment>
         <React.Fragment>
           <SetupCreation />

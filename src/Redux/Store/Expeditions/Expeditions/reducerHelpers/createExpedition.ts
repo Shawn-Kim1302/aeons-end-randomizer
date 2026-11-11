@@ -7,6 +7,7 @@ import { actions } from '../actions'
 import { actions as rootActions } from 'Redux/Store'
 
 import { EXPEDITIONS_DB_KEY } from './helpers'
+import { t } from 'i18n'
 
 export const createExpedition = (
   state: State,
@@ -47,7 +48,7 @@ export const createExpeditionSuccess = (
       Cmd.action(
         rootActions.Snackbars.queue({
           type: 'success',
-          message: 'Expedition created successfully!',
+          message: t('expeditions.createdSuccessfully'),
         })
       ),
     ])

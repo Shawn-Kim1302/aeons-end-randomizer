@@ -7,6 +7,7 @@ import { RootState, selectors } from 'Redux/Store'
 import { RewardType } from 'Redux/Store/Expeditions/Expeditions/'
 import FormControl from 'components/pages/Expeditions/FormControl'
 import Select from 'components/pages/Expeditions/Select'
+import { t } from 'i18n'
 
 type OwnProps = {
   expeditionId: string
@@ -87,27 +88,27 @@ const RewardSelect = ({
       >
         {hasMagesLeft && (
           <MenuItem value="mage" data-test="option-mage">
-            Mage
+            {t('expeditions.rewardTypes.mage')}
           </MenuItem>
         )}
         {hasGemsLeft && (
           <MenuItem value="gem" data-test="option-gem">
-            Gem
+            {t('expeditions.rewardTypes.gem')}
           </MenuItem>
         )}
         {hasRelicsLeft && (
           <MenuItem value="relic" data-test="option-relic">
-            Relic
+            {t('expeditions.rewardTypes.relic')}
           </MenuItem>
         )}
         {hasSpellsLeft && (
           <MenuItem value="spell" data-test="option-spell">
-            Spell
+            {t('expeditions.rewardTypes.spell')}
           </MenuItem>
         )}
         {hasBannersLeft && (
           <MenuItem value="banner" data-test="option-banner">
-            Banner
+            {t('expeditions.rewardTypes.banner')}
           </MenuItem>
         )}
 

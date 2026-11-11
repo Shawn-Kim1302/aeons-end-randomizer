@@ -1,6 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components/macro'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import 'rpg-awesome/css/rpg-awesome.min.css'
 
@@ -12,17 +13,22 @@ import { mainTheme, muiTheme } from '../../mainTheme'
 import MainApp from './MainApp'
 import Wrapper from './Wrapper'
 
-const App = () => (
-  <ThemeProvider theme={mainTheme}>
-    <MuiThemeProvider theme={muiTheme}>
-      <Router basename={process.env.PUBLIC_URL}>
-        <Wrapper>
-          <CssBaseline />
-          <MainApp />
-        </Wrapper>
-      </Router>
-    </MuiThemeProvider>
-  </ThemeProvider>
-)
+const App = () => {
+  // Remount the app when the UI language changes so every text is re-translated.
+  const { i18n } = useTranslation()
+
+  return (
+    <ThemeProvider theme={mainTheme}>
+      <MuiThemeProvider theme={muiTheme}>
+        <Router basename={process.env.PUBLIC_URL}>
+          <Wrapper key={i18n.language}>
+            <CssBaseline />
+            <MainApp />
+          </Wrapper>
+        </Router>
+      </MuiThemeProvider>
+    </ThemeProvider>
+  )
+}
 
 export default React.memo(App)

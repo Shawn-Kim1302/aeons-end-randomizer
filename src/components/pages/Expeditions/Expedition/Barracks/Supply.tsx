@@ -2,6 +2,7 @@ import React from 'react'
 
 import ExpansionPanel from '../../../../molecules/ExpansionPanel'
 import SupplyList, { OptionalTile } from '../../../../molecules/SupplyList'
+import { t } from 'i18n'
 
 type Props = {
   tiles: OptionalTile[]
@@ -15,7 +16,7 @@ type Props = {
 
 const Supply = ({ tiles, expansionKey, expansionHandler, expanded }: Props) => (
   <ExpansionPanel
-    summary="Supply"
+    summary={t('expeditions.expedition.supply')}
     expansionKey={expansionKey}
     expansionHandler={expansionHandler}
     expanded={expanded}

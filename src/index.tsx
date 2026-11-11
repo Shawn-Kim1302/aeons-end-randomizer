@@ -12,6 +12,7 @@ import { create } from 'jss'
 
 import { createGenerateClassName, jssPreset } from '@material-ui/core/styles'
 
+import './i18n'
 import App from './components/App'
 import * as serviceWorker from './serviceWorker'
 import configureStore from './Redux/configureStore'

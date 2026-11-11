@@ -8,6 +8,7 @@ import SelectField from './SelectField'
 import SelectFieldsWrapper from './SelectFieldsWrapper'
 import BluePrintWrapper from './BluePrintWrapper'
 import CancelButton from './CancelButton'
+import { t } from 'i18n'
 
 type Props = {
   bluePrint: types.IBluePrint
@@ -28,7 +29,7 @@ const renderInputFieldsByOperation = (
       <FormControl>
         <InputField
           id={`threshold-${bluePrint.id}`}
-          label="Threshold"
+          label={t('settings.supply.threshold')}
           value={bluePrint.threshold || ''}
           onChange={(e: React.ChangeEvent<{ name?: string; value: string }>) =>
             dispatch({
@@ -63,7 +64,7 @@ const renderInputFieldsByOperation = (
         <FormControl>
           <InputField
             id={`value-1-${bluePrint.id}`}
-            label="Value 1"
+            label={t('settings.supply.value1')}
             value={valueA}
             onChange={(
               e: React.ChangeEvent<{ name?: string; value: string }>
@@ -84,7 +85,7 @@ const renderInputFieldsByOperation = (
         <FormControl>
           <InputField
             id={`value-2-${bluePrint.id}`}
-            label="Value 2"
+            label={t('settings.supply.value2')}
             value={valueB}
             onChange={(
               e: React.ChangeEvent<{ name?: string; value: string }>

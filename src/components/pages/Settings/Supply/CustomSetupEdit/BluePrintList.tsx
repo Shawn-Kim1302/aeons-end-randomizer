@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button'
 
 import BluePrint from './BluePrint'
 import ListWrapper from './ListWrapper'
+import { t } from 'i18n'
 
 type Props = {
   bluePrintList: types.Slot[]
@@ -19,7 +20,7 @@ const BluePrintList = ({ bluePrintList, dispatch }: Props) => {
         onClick={() => dispatch({ type: 'ADD' })}
         data-test="btn-add-supply-tile"
       >
-        Add Supply tile
+        {t('settings.supply.addSupplyTile')}
       </Button>
       {bluePrintList.map((bluePrint) => (
         <BluePrint

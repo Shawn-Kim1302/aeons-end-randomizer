@@ -2,12 +2,12 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
 import A from '../atoms/A'
+import { t } from 'i18n'
 
 const NoSelectedExpansions = () => (
   <Typography paragraph>
-    There is currently no standalone set selected. Please activate at least one
-    standalone set in the settings.{' '}
-    <A to="/settings">Click here to go to the settings</A>.
+    {t('noSelectedExpansions')} <A to="/settings">{t('common.goToSettings')}</A>
+    .
   </Typography>
 )
 

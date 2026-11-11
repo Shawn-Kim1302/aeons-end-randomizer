@@ -10,6 +10,7 @@ import InfoItem from '../InfoItem'
 import SectionHeadline from 'components/atoms/SectionHeadline'
 
 import AdditionalInfo from './AdditionalInfo'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
   const expansion = ownProps.nemesis
@@ -35,28 +36,38 @@ type Props = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps &
   OwnProps
 
-const NemesisInformation = ({ nemesis, fightFive = false, expansion, theme }: Props) => {
+const NemesisInformation = ({
+  nemesis,
+  fightFive = false,
+  expansion,
+  theme,
+}: Props) => {
   if (!expansion || !nemesis) {
     return null
   }
-  const additionalInfo = fightFive ? nemesis.fightFiveAdditionalInfo : nemesis.additionalInfo
+  const additionalInfo = fightFive
+    ? nemesis.fightFiveAdditionalInfo
+    : nemesis.additionalInfo
 
   return (
     <React.Fragment>
-      <InfoItem label="Expansion" info={expansion.name} />
-      <InfoItem label="Wave" info={expansion.wave || '-'} />
-      <InfoItem label="Health" info={nemesis.health.toString()} />
-      <InfoItem label="Difficulty" info={nemesis.difficulty.toString()} />
+      <InfoItem label={t('info.expansion')} info={expansion.name} />
+      <InfoItem label={t('info.wave')} info={expansion.wave || '-'} />
+      <InfoItem label={t('info.health')} info={nemesis.health.toString()} />
       <InfoItem
-        label="Expedition tier"
-        info={fightFive ? "5" : nemesis.expeditionRating.toString()}
+        label={t('info.difficulty')}
+        info={nemesis.difficulty.toString()}
+      />
+      <InfoItem
+        label={t('info.expeditionTier')}
+        info={fightFive ? '5' : nemesis.expeditionRating.toString()}
       />
       {additionalInfo ? (
         <React.Fragment>
           <SectionHeadline
             themeColor={theme.colors.turnOrderCards['nemesis'].normal}
           >
-            Additional Information
+            {t('info.additionalInformation')}
           </SectionHeadline>
           <AdditionalInfo
             dangerouslySetInnerHTML={{

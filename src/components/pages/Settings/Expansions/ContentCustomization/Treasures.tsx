@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { RootState, selectors, actions } from 'Redux/Store'
 
 import TreasureListItem from './TreasureListItem'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState, props: { expansionId: string }) => ({
   treasures: selectors.Settings.Expansions.Treasures.getTreasuresByExpansionId(
@@ -27,7 +28,7 @@ const Treasures = ({ treasures, handleTreasureChange }: Props) => (
       <TreasureListItem
         entities={treasures}
         handleCheckboxChange={handleTreasureChange}
-        label="Treasures"
+        label={t('settings.content.treasures')}
       />
     )}
   </React.Fragment>

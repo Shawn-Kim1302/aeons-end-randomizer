@@ -13,6 +13,7 @@ import Body from 'components/molecules/BasicNemesisCardInformation'
 
 import ModalBodyWrapper from 'components/atoms/ModalBodyWrapper'
 import P from 'components/atoms/P'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState, _: any) => ({
   expansions:
@@ -44,7 +45,7 @@ const BasicNemesisCardModal = ({
         {card ? (
           <Body card={card} expansion={expansions[card.expansion]} />
         ) : (
-          <P>No content</P>
+          <P>{t('common.noContent')}</P>
         )}
       </ModalBodyWrapper>
     </RenderModal>

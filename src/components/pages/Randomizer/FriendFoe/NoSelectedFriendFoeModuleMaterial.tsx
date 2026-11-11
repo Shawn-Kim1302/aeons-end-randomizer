@@ -2,11 +2,12 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
 import A from 'components/atoms/A'
+import { t } from 'i18n'
 
 const NoSelectedFriendFoeModuleMaterial = () => (
   <Typography paragraph>
-    There are currently no selected cards from the Friends &amp; Foes module.{' '}
-    <A to="/settings">Click here to go to the settings</A>.
+    {t('randomizer.noFriendFoeCards')}{' '}
+    <A to="/settings">{t('common.goToSettings')}</A>.
   </Typography>
 )
 

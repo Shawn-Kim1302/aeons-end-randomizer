@@ -9,6 +9,7 @@ import ModalFooterWrapper from 'components/atoms/ModalFooterWrapper'
 import BattleLostButton from 'components/pages/Expeditions/Expedition/Branch/Battle/BattleStarted/BattleLostButton'
 import BattleWonButton from 'components/pages/Expeditions/Expedition/Branch/Battle/BattleStarted/BattleWonButton'
 import SpecialRules from '../SpecialRules'
+import { t } from 'i18n'
 
 type OwnProps = {
   battle: types.Battle
@@ -20,10 +21,11 @@ type OwnProps = {
 const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
   const { expeditionId } = ownProps.battle
 
-  const expeditionHasNextBattle = selectors.Expeditions.Expeditions.getHasNextBranch(
-    state,
-    { expeditionId, branchId: ownProps.battle.id }
-  )
+  const expeditionHasNextBattle =
+    selectors.Expeditions.Expeditions.getHasNextBranch(state, {
+      expeditionId,
+      branchId: ownProps.battle.id,
+    })
 
   return {
     expeditionHasNextBattle,
@@ -88,9 +90,7 @@ const BattleStarted = ({
           <SpecialRules
             rules={[
               ...(specialRules ? [specialRules] : []),
-              ...(onLoss === 'skip'
-                ? ['You only have a single try for this battle!']
-                : []),
+              ...(onLoss === 'skip' ? [t('common.singleTry')] : []),
             ]}
           />
         )}

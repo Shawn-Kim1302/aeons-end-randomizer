@@ -13,6 +13,7 @@ import BattleStarted from './BattleStarted'
 import BattleWon from './BattleWon'
 import BattleLost from './BattleLost'
 import ExpeditionFinished from '../ExpeditionFinished'
+import { t } from 'i18n'
 
 type OwnProps = {
   battle: types.Battle
@@ -27,7 +28,9 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
     : null
   const friendId = ownProps.battle.friendId
   const friend = friendId
-    ? selectors.Settings.Expansions.Friends.content.getById(state, { id: friendId })
+    ? selectors.Settings.Expansions.Friends.content.getById(state, {
+        id: friendId,
+      })
     : undefined
   const foeId = ownProps.battle.foeId
   const foe = foeId
@@ -112,10 +115,18 @@ const Battle = ({
         onClick={handleClick}
         data-test="btn-battle"
       >
-        <BattleTile battle={battle} nemesis={nemesis?.name || '?'} friend={friend?.name} foe={foe?.name} />
+        <BattleTile
+          battle={battle}
+          nemesis={nemesis?.name || '?'}
+          friend={friend?.name}
+          foe={foe?.name}
+        />
       </BranchWrapper>
 
-      <beforeBattle.RenderModal titleColor="#333" titleLabel="Before Fight">
+      <beforeBattle.RenderModal
+        titleColor="#333"
+        titleLabel={t('expeditions.battle.beforeFight')}
+      >
         <BeforeBattle
           hide={beforeBattle.hide}
           battle={battle}
@@ -126,7 +137,10 @@ const Battle = ({
         />
       </beforeBattle.RenderModal>
 
-      <battleStarted.RenderModal titleColor="#333" titleLabel="Resolve battle">
+      <battleStarted.RenderModal
+        titleColor="#333"
+        titleLabel={t('expeditions.battle.resolveBattle')}
+      >
         <BattleStarted
           hide={battleStarted.hide}
           battle={battle}
@@ -135,7 +149,10 @@ const Battle = ({
         />
       </battleStarted.RenderModal>
 
-      <battleLost.RenderModal titleColor="#333" titleLabel="Battle lost">
+      <battleLost.RenderModal
+        titleColor="#333"
+        titleLabel={t('expeditions.battle.battleLost')}
+      >
         <BattleLost
           hide={battleLost.hide}
           battle={battle}
@@ -143,13 +160,16 @@ const Battle = ({
         />
       </battleLost.RenderModal>
 
-      <battleWon.RenderModal titleColor="#333" titleLabel="Rewards">
+      <battleWon.RenderModal
+        titleColor="#333"
+        titleLabel={t('expeditions.battle.rewards')}
+      >
         <BattleWon hide={battleWon.hide} battle={battle} />
       </battleWon.RenderModal>
 
       <expeditionComplete.RenderModal
         titleColor="#333"
-        titleLabel="Congratulations"
+        titleLabel={t('expeditions.battle.congratulations')}
       >
         <ExpeditionFinished branch={battle} hide={expeditionComplete.hide} />
       </expeditionComplete.RenderModal>

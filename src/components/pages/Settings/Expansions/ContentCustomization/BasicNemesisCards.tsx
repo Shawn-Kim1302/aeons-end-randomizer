@@ -4,12 +4,14 @@ import { connect } from 'react-redux'
 import { RootState, selectors, actions } from 'Redux/Store'
 
 import NemesisCardListItem from './NemesisCardListItem'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState, props: { expansionId: string }) => ({
-  basicNemesisCards: selectors.Settings.Expansions.BasicNemesisCards.getContentByExpansionId(
-    state,
-    props
-  ),
+  basicNemesisCards:
+    selectors.Settings.Expansions.BasicNemesisCards.getContentByExpansionId(
+      state,
+      props
+    ),
 })
 
 const mapDispatchToProps = {
@@ -31,7 +33,7 @@ const BasicNemesisCards = ({
       <NemesisCardListItem
         entities={basicNemesisCards}
         handleCheckboxChange={handleBasicNemesisCardChange}
-        label="Basic Nemesis Cards"
+        label={t('settings.content.basicNemesisCards')}
       />
     )}
   </React.Fragment>

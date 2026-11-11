@@ -4,6 +4,7 @@ import * as types from 'aer-types/types'
 
 import TreasureList from 'components/molecules/TreasureList'
 import SectionHeadline from 'components/atoms/SectionHeadline'
+import { t } from 'i18n'
 
 type Props = {
   treasures: types.Treasure[]
@@ -12,7 +13,9 @@ type Props = {
 const TreasureReward = ({ treasures }: Props) => {
   return (
     <>
-      {treasures.length > 0 && <SectionHeadline>Treasures</SectionHeadline>}
+      {treasures.length > 0 && (
+        <SectionHeadline>{t('expeditions.branch.treasures')}</SectionHeadline>
+      )}
       <TreasureList treasures={treasures} />
     </>
   )

@@ -12,6 +12,7 @@ import P from 'components/atoms/P'
 import CheckboxWithPreview from '../CheckboxWithPreview'
 import CustomSetupEdit from '../CustomSetupEdit'
 import CheckboxWithPreviewControls from './CheckboxWithPreviewControls'
+import { t } from 'i18n'
 
 type Props = {
   setup: types.IMarketSetup
@@ -38,17 +39,17 @@ const CustomSetupCheckbox = ({
     hide: hideDeletionDialog,
     RenderPrompt: RenderDeletionPrompt,
   } = usePrompt()
-  const modalTitle = 'Edit Setup'
+  const modalTitle = t('settings.supply.editSetup')
 
   const handleEdit = useCallback(() => {
     showEditModal()
     editSetup(setup.id)
   }, [setup.id, showEditModal, editSetup])
 
-  const handleEditCancel = useCallback(() => cancelEdit(setup.id), [
-    cancelEdit,
-    setup.id,
-  ])
+  const handleEditCancel = useCallback(
+    () => cancelEdit(setup.id),
+    [cancelEdit, setup.id]
+  )
 
   const openDeletionDialog = useCallback(() => {
     showDeletionDialog()
@@ -88,9 +89,9 @@ const CustomSetupCheckbox = ({
         yesHandler={handleDelete}
         noHandler={hideDeletionDialog}
         titleColor="#333"
-        titleLabel="Delete Setup"
+        titleLabel={t('settings.supply.deleteSetup')}
       >
-        <P>Would you really like to delete setup: "{setup.name}"?</P>
+        <P>{t('settings.supply.deleteSetupQuestion', { name: setup.name })}</P>
       </RenderDeletionPrompt>
     </CheckboxWithPreview>
   )

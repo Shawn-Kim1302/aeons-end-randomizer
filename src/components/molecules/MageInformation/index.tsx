@@ -11,6 +11,7 @@ import SectionHeadline from '../../atoms/SectionHeadline'
 import UniqueStarter from '../UniqueStarter'
 
 import Grid from '@material-ui/core/Grid'
+import { t } from 'i18n'
 
 const renderUniqueStarters = (uniqueStarters: ICard[]) => {
   return uniqueStarters.map((card: ICard) => (
@@ -36,15 +37,18 @@ function formatCharges(
 
 const MageInformation = ({ mage, player, expansion, theme }: Props) => (
   <React.Fragment>
-    <InfoItem label="Title" info={mage.mageTitle} />
-    <InfoItem label="Expansion" info={expansion.name} />
-    <InfoItem label="Wave" info={expansion.wave || '-'} />
+    <InfoItem label={t('info.title')} info={mage.mageTitle} />
+    <InfoItem label={t('info.expansion')} info={expansion.name} />
+    <InfoItem label={t('info.wave')} info={expansion.wave || '-'} />
     <InfoItem
-      label="Charges"
+      label={t('info.charges')}
       info={formatCharges(mage.numberOfCharges, mage.numberOfOvercharges)}
     />
     {mage.complexityRating ? (
-      <InfoItem label="Complexity" info={mage.complexityRating.toString()} />
+      <InfoItem
+        label={t('info.complexity')}
+        info={mage.complexityRating.toString()}
+      />
     ) : null}
 
     <Ability
@@ -65,7 +69,7 @@ const MageInformation = ({ mage, player, expansion, theme }: Props) => (
           : theme.colors.playerColors['player1'].normal
       }
     >
-      Unique Starters
+      {t('info.uniqueStarters')}
     </SectionHeadline>
 
     {mage.uniqueStarters ? (

@@ -8,6 +8,7 @@ import P from '../../atoms/P'
 
 import List from './List'
 import OverviewEntry from './OverviewEntry'
+import { t } from 'i18n'
 
 const renderExpeditions = (expeditions: Array<Expedition>) => {
   return expeditions.map((expedition) => (
@@ -29,7 +30,7 @@ const ExpeditionList = ({ expeditions }: Props) => {
       {expeditions.length > 0 ? (
         <List>{renderExpeditions(expeditions)}</List>
       ) : (
-        <P>No expeditions</P>
+        <P>{t('expeditions.noExpeditions')}</P>
       )}
     </React.Fragment>
   )

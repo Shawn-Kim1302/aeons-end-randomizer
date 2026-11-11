@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import { t } from 'i18n'
 
 type Props = {
   handleContinue: () => void
@@ -16,7 +17,7 @@ const ContinueButton = ({ handleContinue, finishingIsPossible }: Props) => {
       disabled={!finishingIsPossible}
       data-test="btn-continue"
     >
-      Continue
+      {t('common.continue')}
     </Button>
   )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 
 import InfoItem from 'components/molecules/InfoItem'
 import P from 'components/atoms/P'
+import { t } from 'i18n'
 
 type Props = {
   info: string
@@ -10,8 +11,8 @@ type Props = {
 const WinOverview = ({ info }: Props) => {
   return (
     <>
-      <P>Expedition complete!</P>
-      <InfoItem label="Score" info={info} />
+      <P>{t('expeditions.branch.expeditionComplete')}</P>
+      <InfoItem label={t('expeditions.branch.score')} info={info} />
     </>
   )
 }

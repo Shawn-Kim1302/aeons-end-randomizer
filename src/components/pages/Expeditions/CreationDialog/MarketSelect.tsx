@@ -6,6 +6,7 @@ import FormControl from '../FormControl'
 import FormLabel from './FormLabel'
 
 import MoleculeMarketSelect from 'components/molecules/MarketSelect'
+import { t } from 'i18n'
 
 type Props = {
   clickHandler: (id: string) => void
@@ -20,7 +21,7 @@ const MarketSelect = ({
 }: Props) => {
   return (
     <FormControl component={'fieldset' as 'div'}>
-      <FormLabel>Market</FormLabel>
+      <FormLabel>{t('expeditions.creation.market')}</FormLabel>
       <MoleculeMarketSelect
         selectedMarketId={selectedMarketId}
         clickHandler={clickHandler}

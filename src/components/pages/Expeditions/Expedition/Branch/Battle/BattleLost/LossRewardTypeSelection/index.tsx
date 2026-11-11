@@ -12,6 +12,7 @@ import SectionHeadline from 'components/atoms/SectionHeadline'
 
 import RewardSelect from './RewardSelect'
 import ConfirmButton from './ConfirmButton'
+import { t } from 'i18n'
 
 const getTreasureOptionsByTier = (tier: 1 | 2 | 3 | 4 | 5) => [
   ...([2, 3, 4, 5].includes(tier) ? [{ level: 1 }] : []),
@@ -40,9 +41,8 @@ const LossRewardTypeSelection = ({ battle, rollLoss }: Props) => {
   const treasureOptions = getTreasureOptionsByTier(battle.config.tier)
 
   // FIXME does not work, if mage is not shown as option, due to no available mages
-  const [rewardSelectValue, updateRewardSelectValue] = useState<RewardType>(
-    'mage'
-  )
+  const [rewardSelectValue, updateRewardSelectValue] =
+    useState<RewardType>('mage')
 
   const handleRewardSelectChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -65,7 +65,9 @@ const LossRewardTypeSelection = ({ battle, rollLoss }: Props) => {
     return (
       <React.Fragment>
         <ModalBodyWrapper hasFooter={true}>
-          <SectionHeadline>Get your rewards</SectionHeadline>
+          <SectionHeadline>
+            {t('expeditions.battle.getYourRewards')}
+          </SectionHeadline>
         </ModalBodyWrapper>
         <ModalFooterWrapper>
           <ConfirmButton
@@ -80,7 +82,9 @@ const LossRewardTypeSelection = ({ battle, rollLoss }: Props) => {
   return (
     <React.Fragment>
       <ModalBodyWrapper hasFooter={true}>
-        <SectionHeadline>Select an item to roll</SectionHeadline>
+        <SectionHeadline>
+          {t('expeditions.battle.selectItemToRoll')}
+        </SectionHeadline>
         <RewardSelect
           expeditionId={battle.expeditionId}
           rewardSelectValue={rewardSelectValue}

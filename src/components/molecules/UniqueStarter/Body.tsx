@@ -8,6 +8,7 @@ import InfoItem from '../../molecules/InfoItem'
 import Name from './Name'
 
 import List from '@material-ui/core/List'
+import { t } from 'i18n'
 
 type Props = {
   card: ICard
@@ -17,8 +18,8 @@ const Body = ({ card }: Props) => (
   <React.Fragment>
     <Name>{card.name}</Name>
     <List>
-      <InfoItem label="Type" info={card.type} />
-      <InfoItem label="Cost" info={card.cost.toString()} />
+      <InfoItem label={t('info.type')} info={card.type} />
+      <InfoItem label={t('info.cost')} info={card.cost.toString()} />
     </List>
 
     <Effect effect={card.effect || ''} />

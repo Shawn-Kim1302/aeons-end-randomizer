@@ -14,6 +14,7 @@ import TreasureReward from '../TreasureReward'
 import MageReward from '../MageReward'
 import ContinueButton from './ContinueButton'
 import { InputBranch } from 'Redux/Store/Expeditions/Expeditions/actions'
+import { t } from 'i18n'
 
 type OwnProps = {
   branch: InputBranch
@@ -50,7 +51,7 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
 
   const newMages =
     ownProps.branch.rewards && ownProps.branch.rewards.mages
-      ? ownProps.branch.rewards.mages.map(mage => {
+      ? ownProps.branch.rewards.mages.map((mage) => {
           return selectors.Settings.Expansions.Mages.content.getById(state, {
             id: mage,
           })
@@ -58,20 +59,22 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
       : []
 
   const newBannerIds = ownProps.branch.rewards?.bannerIds ?? []
-  const newBanners = newBannerIds.map(id => selectors.Settings.Expansions.Banners.content.getById(state, { id }))
+  const newBanners = newBannerIds.map((id) =>
+    selectors.Settings.Expansions.Banners.content.getById(state, { id })
+  )
 
   const lists = [
     {
       id: 'newSupply',
-      tiles: newSupplyCards.map(tile => ({
+      tiles: newSupplyCards.map((tile) => ({
         ...tile,
         visualSelection: false,
       })),
-      title: 'New cards',
+      title: t('expeditions.branch.newCardsList'),
     },
     {
       id: 'expedition',
-      tiles: expeditionSupply.map(tile => ({
+      tiles: expeditionSupply.map((tile) => ({
         ...tile,
         visualSelection: false,
       })),
@@ -106,9 +109,8 @@ const RewardScreen = ({
   showNext,
   treasures,
 }: Props) => {
-  const [listsWithSelectionState, updateLists] = useState<
-    Array<helpers.ListWithSelection>
-  >(lists)
+  const [listsWithSelectionState, updateLists] =
+    useState<Array<helpers.ListWithSelection>>(lists)
   const [selectedCardsCount, updateSelectedCardsCount] = useState(0)
   const amountOfCardsToSelect = newSupplyCards.length
   const enoughCardsSelected = selectedCardsCount === amountOfCardsToSelect
@@ -136,9 +138,8 @@ const RewardScreen = ({
           listsWithSelectionState
         )
 
-        const numberOfSelectedCards = helpers.calculateNumberOfSelectedCards(
-          updatedLists
-        )
+        const numberOfSelectedCards =
+          helpers.calculateNumberOfSelectedCards(updatedLists)
 
         updateSelectedCardsCount(numberOfSelectedCards)
         updateLists(updatedLists)

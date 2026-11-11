@@ -2,6 +2,7 @@ import React from 'react'
 
 import InfoItem from 'components/molecules/InfoItem'
 import Wrapper from './Wrapper'
+import { t } from 'i18n'
 
 type Props = {
   count: number
@@ -10,7 +11,7 @@ type Props = {
 const RoundCount = ({ count }: Props) => {
   return (
     <Wrapper>
-      <InfoItem label="Round" info={count.toString()}></InfoItem>
+      <InfoItem label={t('turnOrder.round')} info={count.toString()}></InfoItem>
     </Wrapper>
   )
 }

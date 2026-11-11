@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button'
 
 import ModalBodyWrapper from '../atoms/ModalBodyWrapper'
 import ModalFooterWrapper from '../atoms/ModalFooterWrapper'
+import { t } from 'i18n'
 
 const Prompt = ({
   yesHandler,
@@ -25,7 +26,7 @@ const Prompt = ({
           color="secondary"
           data-test="NO"
         >
-          No
+          {t('common.no')}
         </Button>
         <Button
           size="small"
@@ -34,7 +35,7 @@ const Prompt = ({
           onClick={yesHandler}
           data-test="YES"
         >
-          Yes
+          {t('common.yes')}
         </Button>
       </ModalFooterWrapper>
     </React.Fragment>

@@ -4,6 +4,7 @@ import * as types from 'aer-types/types'
 
 import ExpansionPanel from 'components/molecules/ExpansionPanel'
 import TreasureList from 'components/molecules/TreasureList'
+import { t } from 'i18n'
 
 type Props = {
   treasures: types.Treasure[]
@@ -24,7 +25,7 @@ const Treasure = ({
   <React.Fragment>
     {treasures.length > 0 && (
       <ExpansionPanel
-        summary="Treasure"
+        summary={t('expeditions.expedition.treasure')}
         expansionKey={expansionKey}
         expansionHandler={expansionHandler}
         expanded={expanded}

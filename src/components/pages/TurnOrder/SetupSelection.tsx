@@ -13,23 +13,23 @@ import AERData from 'aer-data/src/index'
 import { RootState, actions, selectors } from 'Redux/Store'
 
 import Card from '../../atoms/Card'
+import { t } from 'i18n'
 
 const renderSetupOptions = (selectedPlayerCount: ITurnOrderPlayerCount) =>
-  Object.values(
-    AERData.turnordersetups[selectedPlayerCount.id].variations
-  ).map((setup) => (
-    <FormControlLabel
-      key={setup.id}
-      value={setup.id}
-      control={<Radio />}
-      label={setup.name}
-    />
-  ))
+  Object.values(AERData.turnordersetups[selectedPlayerCount.id].variations).map(
+    (setup) => (
+      <FormControlLabel
+        key={setup.id}
+        value={setup.id}
+        control={<Radio />}
+        label={setup.name}
+      />
+    )
+  )
 
 const mapStateToProps = (state: RootState) => ({
-  selectedPlayerCount: selectors.TurnOrder.Configuration.getSelectedPlayerCount(
-    state
-  ),
+  selectedPlayerCount:
+    selectors.TurnOrder.Configuration.getSelectedPlayerCount(state),
   selectedSetup: selectors.TurnOrder.Configuration.getSelectedSetup(state),
 })
 
@@ -47,9 +47,9 @@ const SetupSelection = ({
   <Card>
     <CardContent>
       <FormControl component={'fieldset' as 'div'}>
-        <FormLabel>Player Cards Variants</FormLabel>
+        <FormLabel>{t('turnOrder.playerCardsVariants')}</FormLabel>
         <RadioGroup
-          aria-label="Players Variant"
+          aria-label={t('turnOrder.playerCardsVariants')}
           name="turnOrderOptions"
           value={selectedSetup.id}
           onChange={(event: React.ChangeEvent<any>) => {

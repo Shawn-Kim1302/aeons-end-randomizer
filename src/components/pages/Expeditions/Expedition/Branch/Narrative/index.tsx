@@ -9,16 +9,17 @@ import { handleNarrativeClick } from 'components/pages/Expeditions/Expedition/Br
 import { useModal } from 'hooks/useModal'
 import NarrativeUnlocked from './NarrativeUnlocked'
 import ExpeditionFinished from '../ExpeditionFinished'
+import { t } from 'i18n'
 
 type OwnProps = {
   narrative: types.Narrative
 }
 
 const mapStateToProps = (state: RootState, ownProps: OwnProps) => ({
-  expeditionIsFinished: selectors.Expeditions.Expeditions.getExpeditionIsFinished(
-    state,
-    { expeditionId: ownProps.narrative.expeditionId }
-  ),
+  expeditionIsFinished:
+    selectors.Expeditions.Expeditions.getExpeditionIsFinished(state, {
+      expeditionId: ownProps.narrative.expeditionId,
+    }),
 })
 
 const mapDispatchToProps = {}
@@ -54,7 +55,10 @@ const Narrative = ({ narrative, expeditionIsFinished, ...rest }: Props) => {
         <NarrativeTile narrative={narrative} />
       </BranchWrapper>
 
-      <narrativeUnlocked.RenderModal titleColor="#333" titleLabel="Narrative">
+      <narrativeUnlocked.RenderModal
+        titleColor="#333"
+        titleLabel={t('expeditions.branch.narrative')}
+      >
         <NarrativeUnlocked
           hide={narrativeUnlocked.hide}
           narrative={narrative}
@@ -63,7 +67,7 @@ const Narrative = ({ narrative, expeditionIsFinished, ...rest }: Props) => {
 
       <expeditionComplete.RenderModal
         titleColor="#333"
-        titleLabel="Congratulations"
+        titleLabel={t('expeditions.battle.congratulations')}
       >
         <ExpeditionFinished branch={narrative} hide={expeditionComplete.hide} />
       </expeditionComplete.RenderModal>

@@ -6,6 +6,7 @@ import { useModal } from 'hooks/useModal'
 import ShuffleButton from 'components/atoms/ShuffleButton'
 
 import BarracksContent from './BarracksContent'
+import { t } from 'i18n'
 
 type Props = {
   expedition: types.Expedition
@@ -16,7 +17,10 @@ const Barracks = ({ expedition }: Props) => {
 
   return (
     <React.Fragment>
-      <RenderModal titleColor="#333" titleLabel="Barracks">
+      <RenderModal
+        titleColor="#333"
+        titleLabel={t('expeditions.expedition.barracks')}
+      >
         <BarracksContent expedition={expedition} />
       </RenderModal>
       <ShuffleButton
@@ -25,7 +29,7 @@ const Barracks = ({ expedition }: Props) => {
         variant="extended"
         data-test="btn-open-barracks"
       >
-        Show Barracks
+        {t('expeditions.expedition.showBarracks')}
       </ShuffleButton>
     </React.Fragment>
   )

@@ -30,6 +30,7 @@ import Friends from './Friends'
 import Foes from './Foes'
 import Banners from './Banners'
 import Tooltip from 'components/molecules/Tooltip'
+import { t } from 'i18n'
 
 type OwnProps = { expansionId: string }
 
@@ -104,11 +105,11 @@ const ContentCustomization = ({
     <Card>
       <CardContent>
         <Wrapper>
-          <BackLink to="/settings" label="Back to settings" />
+          <BackLink to="/settings" label={t('common.backToSettings')} />
           <FormControl component={'fieldset' as 'div'}>
             <SelectWithTooltipWrapper>
               <FormGroup style={{ minWidth: '50%' }}>
-                <InputLabel shrink>Language</InputLabel>
+                <InputLabel shrink>{t('common.language')}</InputLabel>
                 <SelectField
                   key="lang"
                   value={lang}
@@ -135,9 +136,7 @@ const ContentCustomization = ({
                 </SelectField>
               </FormGroup>
 
-              <Tooltip>
-                Content without available translations will fallback to english!
-              </Tooltip>
+              <Tooltip>{t('settings.translationFallback')}</Tooltip>
             </SelectWithTooltipWrapper>
 
             <FormGroup>
@@ -148,13 +147,15 @@ const ContentCustomization = ({
                     onChange={handleCheckboxChange}
                     value={
                       allExpansionContentSelected
-                        ? 'Deselect All'
-                        : 'Select All'
+                        ? t('common.deselectAll')
+                        : t('common.selectAll')
                     }
                   />
                 }
                 label={
-                  allExpansionContentSelected ? 'Deselect All' : 'Select All'
+                  allExpansionContentSelected
+                    ? t('common.deselectAll')
+                    : t('common.selectAll')
                 }
               />
             </FormGroup>

@@ -4,6 +4,7 @@ import * as types from 'aer-types/types'
 
 import ExpansionPanel from 'components/molecules/ExpansionPanel'
 import SupplyList from '../../../../molecules/SupplyList'
+import { t } from 'i18n'
 
 type Props = {
   banners: types.ICard[]
@@ -24,20 +25,20 @@ const Banner = ({
   <React.Fragment>
     {banners.length > 0 && (
       <ExpansionPanel
-        summary="Banners"
+        summary={t('expeditions.expedition.banners')}
         expansionKey={expansionKey}
         expansionHandler={expansionHandler}
         expanded={expanded}
         data-test="banner"
       >
-          <SupplyList
-            tiles={banners.map((banner) => {
-              return {
-                ...banner,
-                canBeLocked: false,
-              }
-            })}
-          />
+        <SupplyList
+          tiles={banners.map((banner) => {
+            return {
+              ...banner,
+              canBeLocked: false,
+            }
+          })}
+        />
       </ExpansionPanel>
     )}
   </React.Fragment>

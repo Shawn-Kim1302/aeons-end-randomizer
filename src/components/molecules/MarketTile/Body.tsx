@@ -9,6 +9,7 @@ import Name from './Name'
 import CostOperation from './CostOperation'
 
 import List from '@material-ui/core/List'
+import { t } from 'i18n'
 
 type Props = {
   supplyCard: {
@@ -38,15 +39,20 @@ const Body = ({ supplyCard, expansion }: Props) => {
         {supplyCard && supplyCard.name ? supplyCard.name : '-'}
       </Name>
       <List>
-        <InfoItem label="Set" info={expansion ? expansion.name : '-'} />
         <InfoItem
-          label="Wave"
+          label={t('info.set')}
+          info={expansion ? expansion.name : '-'}
+        />
+        <InfoItem
+          label={t('info.wave')}
           info={expansion && expansion.wave ? expansion.wave : '-'}
         />
         <InfoItem
-          label="Cost"
+          label={t('info.cost')}
           info={
-            supplyCard && supplyCard.cost !== undefined ? supplyCard.cost.toString() : '-'
+            supplyCard && supplyCard.cost !== undefined
+              ? supplyCard.cost.toString()
+              : '-'
           }
           data-test="market-tile-cost"
         />

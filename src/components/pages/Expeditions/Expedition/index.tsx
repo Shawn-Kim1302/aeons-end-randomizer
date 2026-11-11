@@ -10,6 +10,7 @@ import BackLink from 'components/molecules/BackLink'
 import Barracks from './Barracks'
 import Branch from './Branch/'
 import Header from './Header'
+import { t } from 'i18n'
 
 const renderBranches = (branches: types.Branches) =>
   Object.values(branches).map((branch, index) => (
@@ -43,7 +44,7 @@ const Expedition = ({ expedition }: Props) => {
     <React.Fragment>
       <BackLink
         to="/expeditions"
-        label="Back to overview"
+        label={t('expeditions.expedition.backToOverview')}
         data-test="backlink"
       />
       <Header

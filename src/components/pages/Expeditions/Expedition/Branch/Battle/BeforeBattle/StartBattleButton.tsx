@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import { t } from 'i18n'
 
 type Props = {
   handleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
@@ -14,7 +15,7 @@ const StartBattleButton = ({ handleClick, ...rest }: Props) => {
       onClick={handleClick}
       {...rest}
     >
-      Start battle
+      {t('expeditions.battle.startBattle')}
     </Button>
   )
 }

@@ -7,6 +7,7 @@ import H2 from '../../atoms/H2'
 import P from '../../atoms/P'
 import A from '../../atoms/A'
 import Li from '../../atoms/Li'
+import { t } from 'i18n'
 
 const About = () => (
   <Card>
@@ -21,22 +22,15 @@ const About = () => (
       </a>
 
       <P>
-        <b>Aeons End Randomizer</b> is an unofficial companion app for the
-        popular deck building game Aeons End. It helps you draw random mages,
-        nemeses and supply cards (gems, relics, spells) and also provides a
-        simulated turn order deck. You still need at least one Aeons End
-        standalone box to actually play the game.
+        <b>Aeons End Randomizer</b> {t('about.intro')}
       </P>
       <P>
-        To get started simply select which expansions you own and would like to
-        use for randomization inside the settings. You can also disable specific
-        cards/mages/nemeses inside the settings.
-        <A to="/settings"> Click here to go to the settings</A>.
+        {t('about.getStarted')}
+        <A to="/settings"> {t('common.goToSettings')}</A>.
       </P>
-      <H2>Supported Expansions</H2>
+      <H2>{t('about.supportedExpansions')}</H2>
       <P>
-        <b>Aeons End Randomizer</b> supports all expansions released to date as
-        well as all promos. The following expansions are supported:
+        <b>Aeons End Randomizer</b> {t('about.supportedExpansionsText')}
       </P>
       <ul>
         <Li>Aeons End</Li>
@@ -56,60 +50,44 @@ const About = () => (
         <Li>Southern Village</Li>
       </ul>
 
-      <H2>Supported Languages</H2>
-      <P>
-        We currently do only support english as language for the user interface.
-        However some content has already been translated into different
-        languages. We will continue supporting multiple languages as they become
-        available in their respective countries and might even start adding
-        UI-translations in the future as well. The following languages are
-        currently (partly) supported:
-      </P>
+      <H2>{t('about.supportedLanguages')}</H2>
+      <P>{t('about.supportedLanguagesText')}</P>
       <ul>
-        <Li>English (full support)</Li>
-        <Li>Polish</Li>
-        <Li>French</Li>
-        <Li>German</Li>
+        <Li>{t('about.languageEnglish')}</Li>
+        <Li>{t('about.languagePolish')}</Li>
+        <Li>{t('about.languageFrench')}</Li>
+        <Li>{t('about.languageGerman')}</Li>
       </ul>
       <P>
-        <i>
-          If you are interested in contributing language files, please file an
-          issue inside our Github-repository or contact us on discord.
-        </i>
+        <i>{t('about.contributeLanguages')}</i>
       </P>
 
-      <H2>User documentation:</H2>
+      <H2>{t('about.userDocumentation')}</H2>
       <P>
-        You can find our documentation on how to use the randomizer and how to
-        create custom expeditions here:{' '}
+        {t('about.userDocumentationText')}{' '}
         <a href="https://on3iro.github.io/aeons-end-randomizer/">
           https://on3iro.github.io/aeons-end-randomizer/
         </a>
       </P>
 
-      <H2>Premade expeditions</H2>
+      <H2>{t('about.premadeExpeditions')}</H2>
       <P>
-        We've created{' '}
+        {t('about.premadeIntro')}{' '}
         <a href="https://github.com/on3iro/aeons-end-randomizer/blob/main/expeditions/newAge.json">
           "The New Age"
         </a>{' '}
-        as well as{' '}
+        {t('about.premadeAnd')}{' '}
         <a href="https://github.com/on3iro/aeons-end-randomizer/blob/main/expeditions/intoTheWild.json">
           "Into The Wild"
         </a>{' '}
-        as replayable expeditions. To play them, you also need the respective
-        expansions physically. You can then copy and import these expeditions,
-        whenever you create a new expedition from the expedition screen.
+        {t('about.premadeOutro')}
       </P>
 
-      <H2>A note on collected user data</H2>
-      <P>We do not track any user specific data whatsoever.</P>
-      <H2>A note on official imagery</H2>
-      <P>
-        Unfortunately we cannot provide any official imagery. We do not want to
-        get into any legal trouble ;)
-      </P>
-      <H2>Copyright Disclaimer</H2>
+      <H2>{t('about.userData')}</H2>
+      <P>{t('about.userDataText')}</P>
+      <H2>{t('about.officialImagery')}</H2>
+      <P>{t('about.officialImageryText')}</P>
+      <H2>{t('about.copyright')}</H2>
       <P>
         Aeons End is copyrighted &#169; 2016-2019 by Indie Boards & Cards and
         ActionPhase Games, all rights reserved.

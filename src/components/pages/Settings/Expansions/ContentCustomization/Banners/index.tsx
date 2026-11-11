@@ -7,22 +7,18 @@ import { RootState, selectors, actions } from 'Redux/Store'
 import ListWrapper from 'components/molecules/ListWrapper'
 
 import Checkbox from './Checkbox'
+import { t } from 'i18n'
 
 export type ChangeHandler = (id: string) => void
 
-const renderCheckboxes = (
-  items: types.ICard[],
-  changeHandler: ChangeHandler
-) =>
+const renderCheckboxes = (items: types.ICard[], changeHandler: ChangeHandler) =>
   items.map((item) => (
     <Checkbox key={item.id} banner={item} changeHandler={changeHandler} />
   ))
 
 const mapStateToProps = (state: RootState, props: { expansionId: string }) => ({
-  selectedBanners: selectors.Settings.Expansions.Banners.getBannersByExpansionId(
-    state,
-    props
-  ),
+  selectedBanners:
+    selectors.Settings.Expansions.Banners.getBannersByExpansionId(state, props),
 })
 
 const mapDispatchToProps = {
@@ -38,7 +34,7 @@ const Banners = ({ selectedBanners, handleBannerChange }: Props) => {
   return (
     <React.Fragment>
       {selectedBanners.length > 0 && (
-        <ListWrapper label="Banners">
+        <ListWrapper label={t('settings.content.banners')}>
           <React.Fragment>
             {renderCheckboxes(selectedBanners, handleBannerChange)}
           </React.Fragment>

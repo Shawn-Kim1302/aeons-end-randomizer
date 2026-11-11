@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { RootState, selectors, actions } from 'Redux/Store'
 
 import CardListItem from './CardListItem'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState, props: { expansionId: string }) => ({
   selectedRelics: selectors.Settings.Expansions.Cards.getRelicsByExpansionId(
@@ -27,7 +28,7 @@ const Relics = ({ selectedRelics, handleRelicChange }: Props) => (
       <CardListItem
         entities={selectedRelics}
         handleCheckboxChange={handleRelicChange}
-        label="Relics"
+        label={t('settings.content.relics')}
       />
     )}
   </React.Fragment>

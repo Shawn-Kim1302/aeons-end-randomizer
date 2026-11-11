@@ -4,6 +4,7 @@ import * as types from 'aer-types/types'
 
 import ExpansionPanel from 'components/molecules/ExpansionPanel'
 import MageList from 'components/molecules/MageList'
+import { t } from 'i18n'
 
 type Props = {
   mages: types.Mage[]
@@ -17,7 +18,7 @@ type Props = {
 
 const Mages = ({ mages, expansionKey, expansionHandler, expanded }: Props) => (
   <ExpansionPanel
-    summary="Mages"
+    summary={t('expeditions.expedition.mages')}
     expansionKey={expansionKey}
     expansionHandler={expansionHandler}
     expanded={expanded}

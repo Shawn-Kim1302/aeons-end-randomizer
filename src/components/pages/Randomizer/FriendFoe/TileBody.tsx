@@ -1,5 +1,5 @@
 import React from 'react'
-import { Foe, Friend } from "aer-types/types"
+import { Foe, Friend } from 'aer-types/types'
 import { RootState, selectors } from 'Redux/Store'
 
 import InfoItem from 'components/molecules/InfoItem'
@@ -8,6 +8,7 @@ import List from '@material-ui/core/List'
 import styled from 'styled-components/macro'
 import Typography from '@material-ui/core/Typography'
 import { connect } from 'react-redux'
+import { t } from 'i18n'
 
 const Name = styled(Typography)`
   font-weight: bold;
@@ -31,17 +32,17 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
 
 type Props = ReturnType<typeof mapStateToProps> & OwnProps
 
-const TileBody = ({them, expansion}: Props) => <>
-  <Name component="p">
-    {them && them.name ? them.name : '-'}
-  </Name>
-  <List>
-    <InfoItem label="Set" info={expansion ? expansion.name : '-'} />
-    <InfoItem
-      label="Wave"
-      info={expansion && expansion.wave ? expansion.wave : '-'}
-    />
-  </List>
-</>
+const TileBody = ({ them, expansion }: Props) => (
+  <>
+    <Name component="p">{them && them.name ? them.name : '-'}</Name>
+    <List>
+      <InfoItem label={t('info.set')} info={expansion ? expansion.name : '-'} />
+      <InfoItem
+        label={t('info.wave')}
+        info={expansion && expansion.wave ? expansion.wave : '-'}
+      />
+    </List>
+  </>
+)
 
 export default connect(mapStateToProps, {})(React.memo(TileBody))

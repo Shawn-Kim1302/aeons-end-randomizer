@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 import { RootState, selectors } from 'Redux/Store'
 
 import ExpansionList, { ChangeHandler } from './ExpansionList'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => ({
-  standalones: selectors.Settings.Expansions.Expansions.getStandaloneExpansions(
-    state
-  ),
+  standalones:
+    selectors.Settings.Expansions.Expansions.getStandaloneExpansions(state),
 })
 
 const mapDispatchToProps = {}
@@ -20,7 +20,7 @@ type Props = ReturnType<typeof mapStateToProps> &
 
 const Standalones = ({ standalones, handleChange }: Props) => (
   <ExpansionList
-    label="Standalone Expansions"
+    label={t('settings.standaloneExpansions')}
     expansions={standalones}
     handleChange={handleChange}
   />

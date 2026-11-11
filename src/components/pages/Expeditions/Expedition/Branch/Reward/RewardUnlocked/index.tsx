@@ -5,6 +5,7 @@ import * as types from 'aer-types/types'
 import { RootState, actions } from 'Redux/Store'
 
 import RewardScreen from '../../RewardScreen'
+import { t } from 'i18n'
 
 type OwnProps = {
   hide: () => void
@@ -27,7 +28,7 @@ const RewardUnlocked = ({ reward, hide, acceptRewards }: Props) => {
   return (
     <>
       {!reward.rewards ? (
-        <div>Loading...</div>
+        <div>{t('common.loading')}</div>
       ) : (
         <RewardScreen callback={acceptRewards} branch={reward} hide={hide} />
       )}

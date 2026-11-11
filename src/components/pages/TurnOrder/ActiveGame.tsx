@@ -9,6 +9,7 @@ import ShuffleButton from '../../atoms/ShuffleButton'
 
 import DiscardTable from './DiscardTable'
 import RoundCount from './RoundCount'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => ({
   deck: selectors.TurnOrder.ActiveGame.getDeck(state),
@@ -40,7 +41,7 @@ const ActiveTurnOrder = ({
         color="secondary"
         onClick={() => newRound(discard)}
       >
-        New Round
+        {t('turnOrder.newRound')}
       </Button>
     ) : (
       <Button
@@ -49,7 +50,7 @@ const ActiveTurnOrder = ({
         color="secondary"
         onClick={drawCard}
       >
-        Draw a card
+        {t('turnOrder.drawCard')}
       </Button>
     )}
 
@@ -58,7 +59,7 @@ const ActiveTurnOrder = ({
     <DiscardTable />
 
     <ShuffleButton color="primary" variant="extended" onClick={resetGame}>
-      Reset Game
+      {t('turnOrder.resetGame')}
     </ShuffleButton>
   </React.Fragment>
 )

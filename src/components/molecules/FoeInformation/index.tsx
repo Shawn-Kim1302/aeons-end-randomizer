@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid'
 import FriendOrFoeAttackTile from '../FriendOrFoeAttackTile'
 import UniqueStarter from '../UniqueStarter'
 import NemesisCardTile from '../NemesisCardTile'
+import { t } from 'i18n'
 
 const renderFoeCards = (foeCards: FriendOrFoeAttack[]) => {
   return foeCards.map((card: FriendOrFoeAttack) => (
@@ -21,7 +22,7 @@ const renderFoeCards = (foeCards: FriendOrFoeAttack[]) => {
   ))
 }
 const renderExtraCards = (foeCards: (ICard | INemesisCard)[]) => {
-  return foeCards.map((card : (ICard | INemesisCard)) => {
+  return foeCards.map((card: ICard | INemesisCard) => {
     if ('cost' in card) {
       return <UniqueStarter key={card.id} card={card}></UniqueStarter>
     } else {
@@ -58,42 +59,44 @@ const FoeInformation = ({ foe, expansion, theme, simple = false }: Props) => {
   if (!foe || !expansion) {
     return null
   }
-  return (<React.Fragment>
-    <InfoItem label="Expansion" info={expansion.name} />
-    <InfoItem label="Wave" info={expansion.wave || '-'} />
-    <InfoItem
-      label="Charges"
-      info={foe.charges.toString()}
-    />
+  return (
+    <React.Fragment>
+      <InfoItem label={t('info.expansion')} info={expansion.name} />
+      <InfoItem label={t('info.wave')} info={expansion.wave || '-'} />
+      <InfoItem label={t('info.charges')} info={foe.charges.toString()} />
 
-    {simple || <>
-      <Ability themeColor={theme.colors.cards.foe.color} name={foe.abilityName} effect={foe.abilityEffect} />
-
-      <SectionHeadline
-        themeColor={theme.colors.cards.foe.color}
-      >
-        Foe Deck
-      </SectionHeadline>
-
-      <Grid container spacing={16}>
-        {renderFoeCards(foe.deck)}
-      </Grid>
-      {foe.extraCards && <>
-          <SectionHeadline
+      {simple || (
+        <>
+          <Ability
             themeColor={theme.colors.cards.foe.color}
-          >
-            Extra Cards
+            name={foe.abilityName}
+            effect={foe.abilityEffect}
+          />
+
+          <SectionHeadline themeColor={theme.colors.cards.foe.color}>
+            {t('info.foeDeck')}
           </SectionHeadline>
 
           <Grid container spacing={16}>
-            {renderExtraCards(foe.extraCards)}
+            {renderFoeCards(foe.deck)}
           </Grid>
-        </>
-      }
-    </>}
+          {foe.extraCards && (
+            <>
+              <SectionHeadline themeColor={theme.colors.cards.foe.color}>
+                {t('info.extraCards')}
+              </SectionHeadline>
 
-    
-  </React.Fragment>)
+              <Grid container spacing={16}>
+                {renderExtraCards(foe.extraCards)}
+              </Grid>
+            </>
+          )}
+        </>
+      )}
+    </React.Fragment>
+  )
 }
 
-export default withTheme(connect(mapStateToProps, mapDispatchToProps)(React.memo(FoeInformation)))
+export default withTheme(
+  connect(mapStateToProps, mapDispatchToProps)(React.memo(FoeInformation))
+)

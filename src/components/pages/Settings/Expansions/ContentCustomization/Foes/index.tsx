@@ -7,13 +7,11 @@ import { RootState, selectors, actions } from 'Redux/Store'
 import ListWrapper from 'components/molecules/ListWrapper'
 
 import Checkbox from './Checkbox'
+import { t } from 'i18n'
 
 export type ChangeHandler = (id: string) => void
 
-const renderCheckboxes = (
-  items: types.Foe[],
-  changeHandler: ChangeHandler
-) =>
+const renderCheckboxes = (items: types.Foe[], changeHandler: ChangeHandler) =>
   items.map((item) => (
     <Checkbox key={item.id} foe={item} changeHandler={changeHandler} />
   ))
@@ -38,7 +36,7 @@ const Foes = ({ selectedFoes, handleFoeChange }: Props) => {
   return (
     <React.Fragment>
       {selectedFoes.length > 0 && (
-        <ListWrapper label="Foes">
+        <ListWrapper label={t('settings.content.foes')}>
           <React.Fragment>
             {renderCheckboxes(selectedFoes, handleFoeChange)}
           </React.Fragment>

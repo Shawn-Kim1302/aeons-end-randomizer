@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 import IconButton from 'components/atoms/IconButton'
 import EditIcon from '@material-ui/icons/Edit'
+import { t } from 'i18n'
 
 const Wrapper = styled('div')``
 
@@ -34,7 +35,7 @@ const CheckboxWithControls = ({ checked, label, changeHandler, id }: Props) => {
       />
       <IconButton
         color="primary"
-        aria-label="Edit"
+        aria-label={t('common.edit')}
         onClick={() => history.push(`/settings/expansions/${id}`)}
       >
         <EditIcon />

@@ -10,6 +10,7 @@ import { RootState, actions } from 'Redux/Store'
 
 import Cell from './Cell'
 import RowWrapper from './RowWrapper'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => ({})
 
@@ -31,8 +32,8 @@ const Row = ({ card, addToTop, addToBottom, shuffleIntoDeck }: Props) => (
     </Cell>
     <Cell align="right">
       <IconButton
-        aria-label="Add to top"
-        title="Add to top"
+        aria-label={t('turnOrder.addToTop')}
+        title={t('turnOrder.addToTop')}
         onClick={() => addToTop(card.id)}
       >
         <Publish fontSize="small" />
@@ -40,8 +41,8 @@ const Row = ({ card, addToTop, addToBottom, shuffleIntoDeck }: Props) => (
     </Cell>
     <Cell align="right">
       <IconButton
-        aria-label="Add to bottom"
-        title="Add to bottom"
+        aria-label={t('turnOrder.addToBottom')}
+        title={t('turnOrder.addToBottom')}
         onClick={() => addToBottom(card.id)}
       >
         <GetApp fontSize="small" />
@@ -49,8 +50,8 @@ const Row = ({ card, addToTop, addToBottom, shuffleIntoDeck }: Props) => (
     </Cell>
     <Cell align="right">
       <IconButton
-        aria-label="Shuffle into Turn Order Deck"
-        title="Shuffle into Turn Order Deck"
+        aria-label={t('turnOrder.shuffleIntoDeck')}
+        title={t('turnOrder.shuffleIntoDeck')}
         onClick={() => shuffleIntoDeck(card.id)}
       >
         <Loop fontSize="small" />

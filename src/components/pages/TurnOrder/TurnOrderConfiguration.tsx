@@ -9,14 +9,13 @@ import CardNameDisplay from './CardNameDisplay'
 import ModeSelection from './ModeSelection'
 import PlayerCountSelection from '../../molecules/PlayerCountSelection'
 import SetupSelection from './SetupSelection'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => ({
-  currentConfiguration: selectors.TurnOrder.Configuration.getConfiguration(
-    state
-  ),
-  selectedPlayerCount: selectors.TurnOrder.Configuration.getSelectedPlayerCount(
-    state
-  ),
+  currentConfiguration:
+    selectors.TurnOrder.Configuration.getConfiguration(state),
+  selectedPlayerCount:
+    selectors.TurnOrder.Configuration.getSelectedPlayerCount(state),
 })
 
 const mapDispatchToProps = {
@@ -30,9 +29,9 @@ const TurnOrderConfiguration = ({
   startGame,
   selectedPlayerCount,
 }: Props) => {
-  const availableVariations = Object.keys(
-    selectedPlayerCount.variations
-  ).map(key => [selectedPlayerCount.variations[key]])
+  const availableVariations = Object.keys(selectedPlayerCount.variations).map(
+    (key) => [selectedPlayerCount.variations[key]]
+  )
 
   const hasMoreThanOneVariant: boolean = availableVariations.length > 1
 
@@ -47,7 +46,7 @@ const TurnOrderConfiguration = ({
         variant="extended"
         onClick={() => startGame(currentConfiguration.turnOrderCards)}
       >
-        Start Game
+        {t('turnOrder.startGame')}
       </ShuffleButton>
     </React.Fragment>
   )

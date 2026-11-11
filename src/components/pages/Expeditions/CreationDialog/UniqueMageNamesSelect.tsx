@@ -4,6 +4,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormControl from '../FormControl'
 import FormLabel from './FormLabel'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import { t } from 'i18n'
 
 type Props = {
   uniqueMageNames: boolean
@@ -16,7 +17,7 @@ const UniqueMageNamesSelect = ({
 }: Props) => {
   return (
     <FormControl component={'fieldset' as 'div'}>
-      <FormLabel>Mage Selection</FormLabel>
+      <FormLabel>{t('expeditions.creation.mageSelection')}</FormLabel>
       <FormControlLabel
         control={
           <Checkbox
@@ -25,7 +26,7 @@ const UniqueMageNamesSelect = ({
             onChange={() => changeUniqueMageNames(!uniqueMageNames)}
           />
         }
-        label="Unique Mage Names"
+        label={t('expeditions.creation.uniqueMageNames')}
       />
     </FormControl>
   )

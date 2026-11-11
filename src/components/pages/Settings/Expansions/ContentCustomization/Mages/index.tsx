@@ -7,6 +7,7 @@ import { RootState, selectors, actions } from 'Redux/Store'
 import ListWrapper from 'components/molecules/ListWrapper'
 
 import Checkbox from './Checkbox'
+import { t } from 'i18n'
 
 export type ChangeHandler = (id: string) => void
 
@@ -35,7 +36,7 @@ const Mages = ({ selectedMages, handleMageChange }: Props) => {
   return (
     <React.Fragment>
       {selectedMages.length > 0 && (
-        <ListWrapper label="Mages">
+        <ListWrapper label={t('settings.content.mages')}>
           <React.Fragment>
             {renderCheckboxes(selectedMages, handleMageChange)}
           </React.Fragment>

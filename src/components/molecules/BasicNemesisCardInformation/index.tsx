@@ -8,6 +8,7 @@ import InfoItem from 'components/molecules/InfoItem'
 
 import SectionHeadline from 'components/atoms/SectionHeadline'
 import Effect from 'components/atoms/Effect'
+import { t } from 'i18n'
 
 type Props = {
   card: types.BasicNemesisCard | types.UpgradedBasicNemesisCard
@@ -17,16 +18,16 @@ type Props = {
 
 const Body = ({ card, expansion, theme }: Props) => (
   <React.Fragment>
-    <InfoItem label="Expansion" info={expansion.name} />
-    <InfoItem label="Wave" info={expansion.wave || '-'} />
-    <InfoItem label="Tier" info={card.tier.toString()} />
-    {card.type && <InfoItem label="Type" info={card.type} />}
+    <InfoItem label={t('info.expansion')} info={expansion.name} />
+    <InfoItem label={t('info.wave')} info={expansion.wave || '-'} />
+    <InfoItem label={t('info.tier')} info={card.tier.toString()} />
+    {card.type && <InfoItem label={t('info.type')} info={card.type} />}
     {card.type === 'Minion' && (
-      <InfoItem label="Hp" info={card.hp.toString()} />
+      <InfoItem label={t('info.hp')} info={card.hp.toString()} />
     )}
 
     <SectionHeadline themeColor={theme.colors.turnOrderCards['nemesis'].normal}>
-      Effect
+      {t('info.effect')}
     </SectionHeadline>
 
     <Effect effect={card.effect || ''} />

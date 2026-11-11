@@ -15,6 +15,7 @@ import Controls from './Controls'
 import ExpeditionTile from './ExpeditionTile'
 import CreationDialog from 'components/pages/Expeditions/CreationDialog'
 import { convertExpeditionToConfig } from 'Redux/Store/Expeditions/Expeditions/helpers'
+import { t } from 'i18n'
 
 type OwnProps = {
   expedition: Expedition
@@ -49,9 +50,9 @@ const OverviewEntry = ({ expedition, deleteHandler, shareHandler }: Props) => {
   const creationModal = useModal()
 
   const url = `/expeditions/${expedition.id}`
-  const deletionDialogTitle = `Would you really like to delete Expedition: "${
-    expedition.name || expedition.id
-  }"?`
+  const deletionDialogTitle = t('expeditions.deleteExpeditionQuestion', {
+    name: expedition.name || expedition.id,
+  })
 
   return (
     <React.Fragment>
@@ -64,7 +65,10 @@ const OverviewEntry = ({ expedition, deleteHandler, shareHandler }: Props) => {
         </Controls>
       </ListItem>
 
-      <creationModal.RenderModal titleColor="#333" titleLabel="New Expedition">
+      <creationModal.RenderModal
+        titleColor="#333"
+        titleLabel={t('expeditions.newExpedition')}
+      >
         <CreationDialog
           finisher={creationModal.hide}
           existingExpeditionConfig={convertExpeditionToConfig(expedition)}
@@ -73,7 +77,7 @@ const OverviewEntry = ({ expedition, deleteHandler, shareHandler }: Props) => {
 
       <deletionPrompt.RenderPrompt
         titleColor="#333"
-        titleLabel="Delete Expedition"
+        titleLabel={t('expeditions.deleteExpedition')}
         yesHandler={yesHandler}
         noHandler={deletionPrompt.hide}
       >

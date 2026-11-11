@@ -8,6 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from './FormLabel'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -29,14 +30,14 @@ const VariantSelect = ({
 }: Props) => {
   return (
     <FormControl component={'fieldset' as 'div'}>
-      <FormLabel>Expedition Variant</FormLabel>
+      <FormLabel>{t('expeditions.creation.expeditionVariant')}</FormLabel>
       <RadioGroup
-        aria-label="Expedition Variant"
+        aria-label={t('expeditions.creation.expeditionVariant')}
         name="variant"
         value={selectedVariantId}
         onChange={handleVariantChange}
       >
-        {variants.map(variant => (
+        {variants.map((variant) => (
           <FormControlLabel
             id={variant.id}
             key={variant.id}

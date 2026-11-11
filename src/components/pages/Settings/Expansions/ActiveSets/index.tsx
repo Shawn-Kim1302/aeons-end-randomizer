@@ -22,13 +22,14 @@ import Standalones from './Standalones'
 import Mini from './Mini'
 import Promos from './Promos'
 
-import DeselectByKeyword  from './DeselectByKeyword'
+import DeselectByKeyword from './DeselectByKeyword'
 
 import SelectWithTooltipWrapper from '../ContentCustomization/SelectWithTooltipWrapper'
 import Tooltip from 'components/molecules/Tooltip'
 import SelectField from 'components/atoms/SelectField'
 import Wrapper from './Wrapper'
 import H2 from 'components/atoms/H2'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState) => ({
   allSetsSelected:
@@ -78,7 +79,9 @@ const ActiveSets = ({
     changeGlobalLanguagePrompt.hide()
   }
 
-  const changeGlobalLanguagePromptTitle = `You have individual language settings for some expansions. Changing the global language will reset those . Do you really want to continue?`
+  const changeGlobalLanguagePromptTitle = t(
+    'settings.changeGlobalLanguageQuestion'
+  )
 
   useEffect(() => {
     const languageOfExpansionsArray = Object.values(languagesOfExpansions)
@@ -105,7 +108,7 @@ const ActiveSets = ({
       <FormControl component={'fieldset' as 'div'}>
         <SelectWithTooltipWrapper>
           <FormGroup style={{ minWidth: '50%' }}>
-            <InputLabel shrink>Language</InputLabel>
+            <InputLabel shrink>{t('common.language')}</InputLabel>
             <SelectField
               key="globalLang"
               value={globalLang}
@@ -149,19 +152,17 @@ const ActiveSets = ({
                 data-test="select-type-menu-item"
                 style={{ display: 'none' }}
               >
-                Custom
+                {t('common.custom')}
               </MenuItem>
             </SelectField>
           </FormGroup>
 
           <Tooltip>
             <p>
-              Change the language for all expansions. This will reset all
-              individual expansion language settings.
+              {t('settings.globalLanguageHelp')}
               <br />
               <br />
-              <b>CUSTOM:</b> One or more expansions have individual language
-              settings.
+              <b>CUSTOM:</b> {t('settings.globalLanguageCustomHelp')}
             </p>
           </Tooltip>
         </SelectWithTooltipWrapper>
@@ -172,10 +173,16 @@ const ActiveSets = ({
               <Checkbox
                 checked={allSetsSelected}
                 onChange={handleSelectAll}
-                value={allSetsSelected ? 'Deselect All' : 'Select All'}
+                value={
+                  allSetsSelected
+                    ? t('common.deselectAll')
+                    : t('common.selectAll')
+                }
               />
             }
-            label={allSetsSelected ? 'Deselect All' : 'Select All'}
+            label={
+              allSetsSelected ? t('common.deselectAll') : t('common.selectAll')
+            }
           />
         </FormGroup>
         <DeselectByKeyword></DeselectByKeyword>
@@ -185,7 +192,7 @@ const ActiveSets = ({
       </FormControl>
       <changeGlobalLanguagePrompt.RenderPrompt
         titleColor="#333"
-        titleLabel="Change global language"
+        titleLabel={t('settings.changeGlobalLanguage')}
         yesHandler={yesHandler}
         noHandler={changeGlobalLanguagePrompt.hide}
       >

@@ -4,6 +4,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormControl from '../FormControl'
 import FormLabel from './FormLabel'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import { t } from 'i18n'
 
 type Props = {
   bigPocketVariant: boolean
@@ -16,7 +17,7 @@ const BigPocketSelect = ({
 }: Props) => {
   return (
     <FormControl component={'fieldset' as 'div'}>
-      <FormLabel>Loot distribution</FormLabel>
+      <FormLabel>{t('expeditions.creation.lootDistribution')}</FormLabel>
       <FormControlLabel
         control={
           <Checkbox
@@ -25,7 +26,7 @@ const BigPocketSelect = ({
             onChange={() => changeBigPocketVariant(!bigPocketVariant)}
           />
         }
-        label="Big Pocket Variant"
+        label={t('expeditions.creation.bigPocketVariant')}
       />
     </FormControl>
   )

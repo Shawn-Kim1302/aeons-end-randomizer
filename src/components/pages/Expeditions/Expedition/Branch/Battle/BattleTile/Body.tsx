@@ -7,6 +7,7 @@ import InfoItem from 'components/molecules/InfoItem'
 
 import BodyWrapper from '../../BodyWrapper'
 import Name from './Name'
+import { t } from 'i18n'
 
 type Props = {
   battle: Battle
@@ -21,11 +22,19 @@ const Body = ({ battle, nemesis, friend, foe }: Props) => (
       Battle: {nemesis}
     </Name>
     <List>
-      {foe && <InfoItem label="Foe" info={foe} />}
-      {friend && <InfoItem label="Friend" info={friend} />}
-      <InfoItem label="Tier" info={battle.config.tier.toString()} />
-      <InfoItem label="Status" info={battle.status} />
-      <InfoItem label="Tries" info={battle.tries.toString()} />
+      {foe && <InfoItem label={t('expeditions.battle.foe')} info={foe} />}
+      {friend && (
+        <InfoItem label={t('expeditions.battle.friend')} info={friend} />
+      )}
+      <InfoItem label={t('info.tier')} info={battle.config.tier.toString()} />
+      <InfoItem
+        label={t('expeditions.battle.status')}
+        info={t(`expeditions.battle.statuses.${battle.status}` as const)}
+      />
+      <InfoItem
+        label={t('expeditions.battle.tries')}
+        info={battle.tries.toString()}
+      />
     </List>
   </BodyWrapper>
 )

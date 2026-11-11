@@ -11,13 +11,14 @@ import { RenderModalType } from '../../../hooks/useModal'
 import ModalBodyWrapper from '../../atoms/ModalBodyWrapper'
 
 import Body from '../SupplyCardInformation'
+import { t } from 'i18n'
 
 export type CardProperties = {
   type: types.CardType
   name: string
   expansion: string
   cost: number
-  developCost?: number,
+  developCost?: number
   keywords: string[]
   effect: string
   selected: boolean
@@ -44,7 +45,7 @@ const SupplyModal = ({ card, expansions, theme, RenderModal }: Props) => {
   const body = card ? (
     <Body card={card} expansion={expansions[card.expansion]} />
   ) : (
-    'No content'
+    t('common.noContent')
   )
 
   return (

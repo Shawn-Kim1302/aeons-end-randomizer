@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Button from '@material-ui/core/Button'
+import { t } from 'i18n'
 
 type Props = {
   handleExpeditionCreation: () => void
@@ -15,7 +16,7 @@ const CreateButton = ({ handleExpeditionCreation, ...rest }: Props) => {
       onClick={handleExpeditionCreation}
       {...rest}
     >
-      Create Expedition
+      {t('expeditions.creation.createExpedition')}
     </Button>
   )
 }

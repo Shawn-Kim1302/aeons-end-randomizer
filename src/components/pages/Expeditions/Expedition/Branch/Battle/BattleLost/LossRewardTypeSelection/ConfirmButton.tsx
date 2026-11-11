@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import { t } from 'i18n'
 
 type Props = {
   handleRewardConfirmation: () => void
@@ -14,7 +15,7 @@ const ConfirmButton = ({ handleRewardConfirmation, ...rest }: Props) => {
       onClick={handleRewardConfirmation}
       {...rest}
     >
-      Get rewards
+      {t('expeditions.battle.getRewards')}
     </Button>
   )
 }

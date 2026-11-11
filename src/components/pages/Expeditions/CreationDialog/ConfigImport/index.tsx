@@ -17,6 +17,7 @@ import FileUpload from './FileUpload'
 import ImportButton from './ImportButton'
 import { schema as expeditionJsonSchema } from './expeditionJsonSchema'
 import Tooltip from 'components/molecules/Tooltip'
+import { t } from 'i18n'
 
 type Props = {
   configImportHandler: (config: types.ExpeditionConfig) => void
@@ -27,9 +28,8 @@ const ConfigImport = ({ configImportHandler }: Props) => {
   const expansionKey = 'import'
   const expansionHandler = createExpansionHandler(expansionKey)
 
-  const [expeditionJsonConfig, changeExpeditionJsonConfig] = useState<string>(
-    ''
-  )
+  const [expeditionJsonConfig, changeExpeditionJsonConfig] =
+    useState<string>('')
 
   const [validationError, changeValidiationError] = useState<string>('')
 
@@ -57,7 +57,7 @@ const ConfigImport = ({ configImportHandler }: Props) => {
             const firstError = (schemaValidator?.errors &&
               schemaValidator?.errors[0]) || {
               dataPath: '<unknown>',
-              message: 'Unknown error',
+              message: t('expeditions.creation.unknownError'),
             }
             const message = `${firstError.dataPath}: ${firstError.message}`
             changeValidiationError(message)
@@ -89,36 +89,26 @@ const ConfigImport = ({ configImportHandler }: Props) => {
 
   return (
     <FormControl component={'fieldset' as 'div'}>
-      <FormLabel>Import</FormLabel>
+      <FormLabel>{t('common.import')}</FormLabel>
       <ExpansionPanel
         expanded={expanded}
         expansionKey={expansionKey}
-        summary="Expedition Import"
+        summary={t('expeditions.creation.expeditionImport')}
         expansionHandler={expansionHandler}
       >
         <ContentWrapper>
-          <Tooltip>
-            This allows you to import an existing expedition either by uploading
-            a correctly formatted JSON-file or by directly pasting the
-            JSON-configuration into the text field below. If you you don't
-            change any of the expeditions parameters (variant, market setup or
-            seed) you will experience the original expedition with the exact
-            same random rolls. To get an idea of what a correctly formatted
-            config looks like, simply press the share button on an existing
-            expedition and either save the configuration to a file or paste it
-            from your clipboard into a text editor.
-          </Tooltip>
+          <Tooltip>{t('expeditions.creation.importHelp')}</Tooltip>
           <ImportButton
             color="primary"
             variant="outlined"
             onClick={handleConfigImport}
             disabled={expeditionJsonConfig.length <= 0}
           >
-            Import
+            {t('common.import')}
           </ImportButton>
           {!!validationError.length && (
             <P style={{ color: 'red' }}>
-              The following error was encountered: <br />
+              {t('expeditions.creation.importError')} <br />
               {validationError}
             </P>
           )}

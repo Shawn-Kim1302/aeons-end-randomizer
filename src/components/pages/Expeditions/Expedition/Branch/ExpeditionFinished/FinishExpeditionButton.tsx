@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import { t } from 'i18n'
 
 type Props = {
   handleFinish: () => void
@@ -13,7 +14,7 @@ const FinishExpeditionButton = ({ handleFinish }: Props) => {
       variant="contained"
       color="primary"
     >
-      Finish Expedition
+      {t('expeditions.branch.finishExpedition')}
     </Button>
   )
 }

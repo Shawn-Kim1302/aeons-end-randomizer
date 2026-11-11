@@ -7,6 +7,7 @@ import SectionHeadline from 'components/atoms/SectionHeadline'
 
 import { ListWithSelection } from './helpers'
 import SupplyList from 'components/molecules/SupplyList'
+import { t } from 'i18n'
 
 type Props = {
   bigPocketVariant: boolean
@@ -28,7 +29,7 @@ const SupplyReward = ({
   return (
     <>
       {newSupplyCards.length > 0 && (
-        <SectionHeadline>New Cards</SectionHeadline>
+        <SectionHeadline>{t('expeditions.branch.newCards')}</SectionHeadline>
       )}
       {newSupplyCards.length > 0 && !bigPocketVariant ? (
         <SupplySelection

@@ -12,6 +12,7 @@ import { MODES } from 'aer-types/types'
 import { RootState, actions, selectors } from '../../../Redux/Store'
 
 import Card from '../../atoms/Card'
+import { t } from 'i18n'
 
 const renderModeOptions = () =>
   MODES.map((mode) => (
@@ -37,12 +38,19 @@ const mapDispatchToProps = {
 
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & {}
 
-const ModeSelection = ({ mode, setMode, friend, setFriend, foe, setFoe }: Props) => (
+const ModeSelection = ({
+  mode,
+  setMode,
+  friend,
+  setFriend,
+  foe,
+  setFoe,
+}: Props) => (
   <Card>
     <CardContent>
-      <FormLabel>Mode</FormLabel>
+      <FormLabel>{t('turnOrder.mode')}</FormLabel>
       <RadioGroup
-        aria-label="mode"
+        aria-label={t('turnOrder.mode')}
         name="turnOrderMode"
         value={mode}
         onChange={(event: React.ChangeEvent<any>) =>
@@ -59,17 +67,13 @@ const ModeSelection = ({ mode, setMode, friend, setFriend, foe, setFoe }: Props)
             onChange={() => setFriend(!friend)}
           />
         }
-        label="Use Friend"
+        label={t('turnOrder.useFriend')}
       />
       <FormControlLabel
         control={
-          <Checkbox
-            id="foe"
-            checked={foe}
-            onChange={() => setFoe(!foe)}
-          />
+          <Checkbox id="foe" checked={foe} onChange={() => setFoe(!foe)} />
         }
-        label="Use Foe"
+        label={t('turnOrder.useFoe')}
       />
     </CardContent>
   </Card>

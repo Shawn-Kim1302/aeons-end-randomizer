@@ -7,6 +7,7 @@ import SectionHeadline from '../../atoms/SectionHeadline'
 import InfoItem from '../InfoItem'
 
 import Wrapper from './Wrapper'
+import { t } from 'i18n'
 
 type ContextProps = {
   listId?: string
@@ -67,7 +68,7 @@ const SupplySelection = ({
         Please select {amountOfCardsToSelect} cards to banish!
       </SectionHeadline>
       <InfoItem
-        label="Cards selected"
+        label={t('randomizer.cardsSelected')}
         info={`${selectedCardsCount}/${amountOfCardsToSelect}`}
       ></InfoItem>
       {renderLists(lists, handleSelection)}

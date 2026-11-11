@@ -5,6 +5,7 @@ import useExpansionHandling from 'hooks/useExpansionHandling'
 import ExpansionPanel from 'components/molecules/ExpansionPanel'
 
 import SetupSelection from './SetupSelection'
+import { t } from 'i18n'
 
 const Supply = () => {
   const { expanded, createExpansionHandler } = useExpansionHandling()
@@ -16,7 +17,7 @@ const Supply = () => {
       expanded={expanded}
       expansionHandler={expansionHandler}
       expansionKey={expansionKey}
-      summary="Supply Setups"
+      summary={t('settings.supplySetups')}
       data-test="SupplySetups"
     >
       <SetupSelection />

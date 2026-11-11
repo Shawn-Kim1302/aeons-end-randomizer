@@ -10,15 +10,15 @@ import Effect from 'components/atoms/Effect'
 import InfoItem from '../../InfoItem'
 
 import Name from './Name'
+import { t } from 'i18n'
 
 type OwnProps = {
   treasure: Treasure
 }
 
 const mapStateToProps = (state: RootState) => ({
-  expansions: selectors.Settings.Expansions.Expansions.content.getContent(
-    state
-  ),
+  expansions:
+    selectors.Settings.Expansions.Expansions.content.getContent(state),
 })
 
 const mapDispatchToProps = {}
@@ -32,11 +32,16 @@ const Body = ({ treasure, expansions }: Props) => (
     <Name component="p">{treasure.name}</Name>
     <List>
       <InfoItem
-        label="Set"
+        label={t('info.set')}
         info={expansions.ENG[treasure.expansion]?.name || ''}
       />
-      <InfoItem label="Treasure Level" info={treasure.level.toString()} />
-      {treasure.subtype && <InfoItem label="Subtype" info={treasure.subtype} />}
+      <InfoItem
+        label={t('info.treasureLevel')}
+        info={treasure.level.toString()}
+      />
+      {treasure.subtype && (
+        <InfoItem label={t('info.subtype')} info={treasure.subtype} />
+      )}
     </List>
     <Effect effect={treasure.effect} />
   </React.Fragment>

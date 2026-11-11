@@ -12,6 +12,7 @@ import GitHubLink from './GitHubLink'
 import GitHubLogo from './GitHubLogo'
 import Drawer from './Drawer'
 import GitHubSvg from './github-logo.svg'
+import { t } from 'i18n'
 
 type Props = {
   drawerIsOpen: boolean
@@ -34,7 +35,7 @@ const DrawerMenu = ({ drawerIsOpen, toggleDrawer }: Props) => (
     <Navigation clickHandler={toggleDrawer} />
     <Divider />
     <AppInfo>
-      Version: {process.env.REACT_APP_VERSION}
+      {t('common.version')}: {process.env.REACT_APP_VERSION}
       <GitHubLink
         href="https://github.com/on3iro/aeons-end-randomizer"
         color="inherit"

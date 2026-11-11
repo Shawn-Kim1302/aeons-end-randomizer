@@ -9,16 +9,17 @@ import ExpeditionFinished from '../ExpeditionFinished'
 import RewardTile from './RewardTile'
 import { handleRewardClick } from './handleRewardClick'
 import RewardUnlocked from './RewardUnlocked'
+import { t } from 'i18n'
 
 type OwnProps = {
   reward: types.Reward
 }
 
 const mapStateToProps = (state: RootState, ownProps: OwnProps) => ({
-  expeditionIsFinished: selectors.Expeditions.Expeditions.getExpeditionIsFinished(
-    state,
-    { expeditionId: ownProps.reward.expeditionId }
-  ),
+  expeditionIsFinished:
+    selectors.Expeditions.Expeditions.getExpeditionIsFinished(state, {
+      expeditionId: ownProps.reward.expeditionId,
+    }),
 })
 
 const mapDispatchToProps = {
@@ -66,13 +67,16 @@ const Reward = ({
         <RewardTile reward={reward} />
       </BranchWrapper>
 
-      <rewardUnlocked.RenderModal titleColor="#333" titleLabel="Reward">
+      <rewardUnlocked.RenderModal
+        titleColor="#333"
+        titleLabel={t('expeditions.branch.reward')}
+      >
         <RewardUnlocked hide={rewardUnlocked.hide} reward={reward} />
       </rewardUnlocked.RenderModal>
 
       <expeditionComplete.RenderModal
         titleColor="#333"
-        titleLabel="Congratulations"
+        titleLabel={t('expeditions.battle.congratulations')}
       >
         <ExpeditionFinished branch={reward} hide={expeditionComplete.hide} />
       </expeditionComplete.RenderModal>

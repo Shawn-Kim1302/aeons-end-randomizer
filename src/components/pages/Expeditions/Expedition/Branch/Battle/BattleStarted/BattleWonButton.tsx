@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Button from '@material-ui/core/Button'
+import { t } from 'i18n'
 
 type Props = {
   handleWin: () => void
@@ -15,7 +16,7 @@ const BattleWonButton = ({ handleWin }: Props) => {
       onClick={handleWin}
       data-test="btn-battle-won"
     >
-      Battle won
+      {t('expeditions.battle.battleWon')}
     </Button>
   )
 }

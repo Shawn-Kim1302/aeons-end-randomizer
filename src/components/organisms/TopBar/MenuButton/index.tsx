@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import MuiIconButton from 'components/atoms/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
+import { t } from 'i18n'
 
 type WrapperProps = {
   drawerIsOpen: boolean
@@ -13,7 +14,7 @@ const Wrapper = styled('div')<WrapperProps>`
 
   color: #fff;
 
-  ${props => (props.drawerIsOpen ? `display: none;` : '')}
+  ${(props) => (props.drawerIsOpen ? `display: none;` : '')}
 `
 
 const IconButton = styled(MuiIconButton)`
@@ -27,7 +28,7 @@ type Props = {
 
 const MenuButton = ({ drawerIsOpen, onClick }: Props) => (
   <Wrapper drawerIsOpen={drawerIsOpen}>
-    <IconButton aria-label="Menu" onClick={onClick}>
+    <IconButton aria-label={t('common.menu')} onClick={onClick}>
       <MenuIcon />
     </IconButton>
   </Wrapper>

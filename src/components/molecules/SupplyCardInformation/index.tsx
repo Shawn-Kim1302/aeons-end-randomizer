@@ -10,6 +10,7 @@ import SectionHeadline from '../../atoms/SectionHeadline'
 import Keywords from '../../atoms/Keywords'
 import Keyword from '../../atoms/Keyword'
 import Effect from '../../atoms/Effect'
+import { t } from 'i18n'
 
 type Props = {
   card: {
@@ -28,18 +29,21 @@ type Props = {
 
 const Body = ({ card, expansion, theme }: Props) => (
   <React.Fragment>
-    <InfoItem label="Expansion" info={expansion.name} />
-    <InfoItem label="Wave" info={expansion.wave || '-'} />
-    <InfoItem label="Type" info={card.type} />
-    <InfoItem label="Cost" info={card.cost.toString()} />
+    <InfoItem label={t('info.expansion')} info={expansion.name} />
+    <InfoItem label={t('info.wave')} info={expansion.wave || '-'} />
+    <InfoItem label={t('info.type')} info={card.type} />
+    <InfoItem label={t('info.cost')} info={card.cost.toString()} />
     {card.developCost ? (
-      <InfoItem label="Develop Cost" info={card.developCost.toString()} />
+      <InfoItem
+        label={t('info.developCost')}
+        info={card.developCost.toString()}
+      />
     ) : null}
 
     <SectionHeadline
       themeColor={theme.colors.cards[card.type.toLowerCase()].color}
     >
-      Effect
+      {t('info.effect')}
     </SectionHeadline>
 
     <Effect effect={card.effect || ''} />

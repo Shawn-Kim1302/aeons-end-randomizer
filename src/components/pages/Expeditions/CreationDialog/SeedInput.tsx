@@ -4,6 +4,7 @@ import FormControl from '../FormControl'
 import FormLabel from './FormLabel'
 import Input from '../Input'
 import Tooltip from 'components/molecules/Tooltip'
+import { t } from 'i18n'
 
 type Props = {
   seed: string
@@ -13,21 +14,14 @@ type Props = {
 const SeedInput = ({ seed, handleInputChange }: Props) => {
   return (
     <FormControl component={'fieldset' as 'div'}>
-      <FormLabel>Seed Settings</FormLabel>
+      <FormLabel>{t('expeditions.creation.seedSettings')}</FormLabel>
 
-      <Tooltip>
-        The seed makes each expeditions rolls completely deterministic. By
-        importing/copying an existing expedition and re-using its seed each roll
-        will be exactly the same as in the original provided that all parameters
-        are unchanged and you perform exactly the same actions. That way you can
-        try to beat your highscore or let other players enjoy a particular
-        expedition by sharing your configuration.
-      </Tooltip>
+      <Tooltip>{t('expeditions.creation.seedHelp')}</Tooltip>
 
       <Input
         id="expeditionSeed"
-        label="Seed"
-        placeholder="Custom Seed"
+        label={t('expeditions.creation.seed')}
+        placeholder={t('expeditions.creation.customSeed')}
         value={seed}
         onChange={handleInputChange}
         margin="normal"

@@ -8,6 +8,7 @@ import { ITurnOrderSetup } from 'aer-types/types'
 import Card from 'components/atoms/Card'
 
 import ConfigurationCardDisplay from './ConfigurationCardDisplay'
+import { t } from 'i18n'
 
 const renderCardNames = (turnOrderSetup: ITurnOrderSetup) =>
   turnOrderSetup.turnOrderCards.map((card, i) => (
@@ -24,7 +25,7 @@ const CardNameDisplay = ({ turnOrderSetup }: Props) => (
   <Card>
     <CardContent>
       <Typography color="textSecondary" gutterBottom>
-        Turn order cards
+        {t('turnOrder.turnOrderCards')}
       </Typography>
       {renderCardNames(turnOrderSetup)}
     </CardContent>

@@ -8,6 +8,7 @@ import InfoItem from 'components/molecules/InfoItem'
 
 import SectionHeadline from 'components/atoms/SectionHeadline'
 import Effect from 'components/atoms/Effect'
+import { t } from 'i18n'
 
 type Props = {
   card: types.Treasure
@@ -17,12 +18,12 @@ type Props = {
 
 const Body = ({ card, expansionName, theme }: Props) => (
   <React.Fragment>
-    <InfoItem label="Set" info={expansionName} />
-    <InfoItem label="Treasure Level" info={card.level.toString()} />
-    {card.subtype && <InfoItem label="Subtype" info={card.subtype} />}
+    <InfoItem label={t('info.set')} info={expansionName} />
+    <InfoItem label={t('info.treasureLevel')} info={card.level.toString()} />
+    {card.subtype && <InfoItem label={t('info.subtype')} info={card.subtype} />}
 
     <SectionHeadline themeColor={theme.colors.text.primary}>
-      Effect
+      {t('info.effect')}
     </SectionHeadline>
 
     <Effect effect={card.effect || ''} />

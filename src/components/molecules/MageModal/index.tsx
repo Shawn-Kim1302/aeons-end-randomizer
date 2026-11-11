@@ -11,6 +11,7 @@ import { RenderModalType } from '../../../hooks/useModal'
 import ModalBodyWrapper from '../../atoms/ModalBodyWrapper'
 
 import MageInformation from '../MageInformation'
+import { t } from 'i18n'
 
 const mapStateToProps = (state: RootState, _: any) => ({
   expansions:
@@ -39,7 +40,7 @@ const MageModal = ({ player, mage, expansions, theme, RenderModal }: Props) => {
       expansion={expansions[mage.expansion]}
     />
   ) : (
-    'No content'
+    t('common.noContent')
   )
 
   return (

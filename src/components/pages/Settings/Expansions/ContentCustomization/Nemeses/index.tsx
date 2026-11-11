@@ -7,6 +7,7 @@ import { RootState, selectors, actions } from 'Redux/Store'
 import ListWrapper from 'components/molecules/ListWrapper'
 
 import Checkbox from './Checkbox'
+import { t } from 'i18n'
 
 export type ChangeHandler = (id: string) => void
 
@@ -19,10 +20,8 @@ const renderCheckboxes = (
   ))
 
 const mapStateToProps = (state: RootState, props: { expansionId: string }) => ({
-  selectedNemeses: selectors.Settings.Expansions.Nemeses.getNemesesByExpansionId(
-    state,
-    props
-  ),
+  selectedNemeses:
+    selectors.Settings.Expansions.Nemeses.getNemesesByExpansionId(state, props),
 })
 
 const mapDispatchToProps = {
@@ -38,7 +37,7 @@ const Nemeses = ({ selectedNemeses, handleNemesisChange }: Props) => {
   return (
     <React.Fragment>
       {selectedNemeses.length > 0 && (
-        <ListWrapper label="Nemeses">
+        <ListWrapper label={t('settings.content.nemeses')}>
           <React.Fragment>
             {renderCheckboxes(selectedNemeses, handleNemesisChange)}
           </React.Fragment>

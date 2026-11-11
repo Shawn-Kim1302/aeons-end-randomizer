@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Button from '@material-ui/core/Button'
+import { t } from 'i18n'
 
 type Props = {
   handleLoss: () => void
@@ -15,7 +16,7 @@ const BattleLostButton = ({ handleLoss }: Props) => {
       onClick={handleLoss}
       data-test="btn-battle-lost"
     >
-      Battle lost
+      {t('expeditions.battle.battleLost')}
     </Button>
   )
 }

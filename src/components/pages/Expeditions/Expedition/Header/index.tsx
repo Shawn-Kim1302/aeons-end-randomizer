@@ -4,6 +4,7 @@ import H2 from '../../../../atoms/H2'
 import P from '../../../../atoms/P'
 
 import Wrapper from './Wrapper'
+import { t } from 'i18n'
 
 type Props = {
   title: string
@@ -12,9 +13,9 @@ type Props = {
 
 const Header = ({ title, score }: Props) => (
   <Wrapper>
-    <H2>Expedition {title}</H2>
+    <H2>{t('expeditions.expedition.title', { title })}</H2>
     <P>
-      <b>Current Score:</b> {score}
+      <b>{t('expeditions.expedition.currentScore')}</b> {score}
     </P>
   </Wrapper>
 )
