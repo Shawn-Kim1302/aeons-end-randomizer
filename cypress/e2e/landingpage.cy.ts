@@ -6,7 +6,7 @@ describe('The landing page "/"', () => {
   it('redirects to the nemesis randomizer', () => {
     cy.visit('/')
     cy.location().should((loc) => {
-      expect(loc.href).to.eq('http://localhost:3000/randomizer/nemesis')
+      expect(loc.href).to.eq(`${Cypress.config('baseUrl')}randomizer/nemesis`)
     })
 
     cy.get('h6').contains('Nemesis')
