@@ -214,20 +214,20 @@ const en = {
   settings: {
     expansions: 'Expansions',
     supplySetups: 'Supply Setups',
-    languageSelection: 'Language Selection',
-    uiLanguage: 'App language',
+    languageSelection: 'App language',
+    cardLanguage: 'Card language',
     uiLanguageHelp: 'Language of menus, buttons and other app text.',
     gameLanguageHelp:
-      'To select a language, go to the Expansion tab above and use the edit button to select the language for each Expansion.',
+      'Card names and effects use a separate setting: Expansions below → Card language (all expansions), or the edit button of each expansion. Korean card data is not available yet.',
     globalLanguageHelp:
-      'Change the language for all expansions. This will reset all individual expansion language settings.',
+      'Language of card names and effects for all expansions. This will reset all individual expansion language settings.',
     globalLanguageCustomHelp:
       'One or more expansions have individual language settings.',
-    changeGlobalLanguage: 'Change global language',
+    changeGlobalLanguage: 'Change card language for all expansions',
     changeGlobalLanguageQuestion:
       'You have individual language settings for some expansions. Changing the global language will reset those. Do you really want to continue?',
     translationFallback:
-      'Content without available translations will fallback to english!',
+      'Language of card names and effects for this expansion. Content without available translations will fallback to english!',
     standaloneExpansions: 'Standalone Expansions',
     miniExpansions: 'Mini Expansions',
     promos: 'Promos',

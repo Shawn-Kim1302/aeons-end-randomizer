@@ -216,18 +216,19 @@ const ko: Dictionary<typeof en> = {
   settings: {
     expansions: '확장',
     supplySetups: '공급처 구성',
-    languageSelection: '언어 선택',
-    uiLanguage: '앱 언어',
+    languageSelection: '앱 언어',
+    cardLanguage: '카드 언어',
     uiLanguageHelp: '메뉴, 버튼 등 앱 화면에 쓰이는 언어예요.',
     gameLanguageHelp:
-      '카드 언어는 위의 확장 탭에서 각 확장의 편집 버튼을 눌러 고를 수 있어요.',
+      '카드 이름과 효과의 언어는 따로 정해요. 아래 확장 → 카드 언어에서 모든 확장을 한 번에, 또는 각 확장의 편집 버튼에서 확장별로 바꿀 수 있어요. 한국어 카드 데이터는 아직 없어요.',
     globalLanguageHelp:
-      '모든 확장의 언어를 한 번에 바꿔요. 확장별로 따로 정한 언어 설정은 초기화돼요.',
+      '모든 확장의 카드 이름과 효과 언어를 한 번에 바꿔요. 확장별로 따로 정한 언어 설정은 초기화돼요.',
     globalLanguageCustomHelp: '하나 이상의 확장에 개별 언어 설정이 있어요.',
-    changeGlobalLanguage: '전체 언어 변경',
+    changeGlobalLanguage: '전체 카드 언어 변경',
     changeGlobalLanguageQuestion:
       '일부 확장에 개별 언어 설정이 있어요. 전체 언어를 바꾸면 이 설정이 초기화돼요. 계속할까요?',
-    translationFallback: '번역이 없는 내용은 영어로 표시돼요!',
+    translationFallback:
+      '이 확장의 카드 이름과 효과 언어예요. 번역이 없는 내용은 영어로 표시돼요!',
     standaloneExpansions: '독립 확장',
     miniExpansions: '미니 확장',
     promos: '프로모',

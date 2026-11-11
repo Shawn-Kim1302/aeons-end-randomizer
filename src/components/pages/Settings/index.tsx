@@ -6,9 +6,9 @@ import Language from './Language'
 
 const Settings = () => (
   <React.Fragment>
+    <Language />
     <Expansions />
     <Supply />
-    <Language />
   </React.Fragment>
 )
 

@@ -108,7 +108,7 @@ const ActiveSets = ({
       <FormControl component={'fieldset' as 'div'}>
         <SelectWithTooltipWrapper>
           <FormGroup style={{ minWidth: '50%' }}>
-            <InputLabel shrink>{t('common.language')}</InputLabel>
+            <InputLabel shrink>{t('settings.cardLanguage')}</InputLabel>
             <SelectField
               key="globalLang"
               value={globalLang}

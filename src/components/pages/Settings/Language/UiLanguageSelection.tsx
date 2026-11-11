@@ -20,7 +20,7 @@ const UiLanguageSelection = () => {
 
   return (
     <FormGroup style={{ marginBottom: '16px' }}>
-      <InputLabel shrink>{t('settings.uiLanguage')}</InputLabel>
+      <InputLabel shrink>{t('common.language')}</InputLabel>
       <SelectField
         value={currentUiLanguage()}
         onChange={(e: React.ChangeEvent<{ value: UiLanguage }>) =>
