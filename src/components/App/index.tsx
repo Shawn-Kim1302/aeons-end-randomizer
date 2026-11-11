@@ -15,7 +15,7 @@ import Wrapper from './Wrapper'
 const App = () => (
   <ThemeProvider theme={mainTheme}>
     <MuiThemeProvider theme={muiTheme}>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Wrapper>
           <CssBaseline />
           <MainApp />

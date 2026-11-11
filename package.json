@@ -47,7 +47,7 @@
     "styled-components": "^5.2.0",
     "typescript": "^4.0.3"
   },
-  "homepage": "https://on3iro.github.io/aeons-end-randomizer/",
+  "homepage": "https://shawn-kim1302.github.io/aeons-end-randomizer/",
   "scripts": {
     "start": "cross-env BROWSER=none REACT_APP_VERSION=$npm_package_version react-scripts start",
     "build:base": "cross-env REACT_APP_VERSION=$npm_package_version react-scripts build",
