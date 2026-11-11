@@ -39,6 +39,38 @@ describe('Settings | Expansions | Cards | selected | reducer', () => {
     )
   })
 
+  it('should handle DESELECT_CARDS', () => {
+    const result = Reducer(
+      ['DiamondCluster', 'ChaosArc', 'Ignite'],
+      actions.deselectCards(['ChaosArc', 'Unknown'])
+    )
+
+    expect(getModel(result)).toEqual(['DiamondCluster', 'Ignite'])
+    expect(getCmd(result)).toEqual(
+      Cmd.run(setSelectedCardsToDB, {
+        args: [['DiamondCluster', 'Ignite']],
+        successActionCreator: actions.setToDBSuccessful,
+        failActionCreator: actions.setToDBFailed,
+      })
+    )
+  })
+
+  it('should handle SELECT_CARDS without adding duplicates', () => {
+    const result = Reducer(
+      ['DiamondCluster'],
+      actions.selectCards(['DiamondCluster', 'ChaosArc'])
+    )
+
+    expect(getModel(result)).toEqual(['DiamondCluster', 'ChaosArc'])
+    expect(getCmd(result)).toEqual(
+      Cmd.run(setSelectedCardsToDB, {
+        args: [['DiamondCluster', 'ChaosArc']],
+        successActionCreator: actions.setToDBSuccessful,
+        failActionCreator: actions.setToDBFailed,
+      })
+    )
+  })
+
   it('should handle FETCH_FROM_DB', () => {
     const result = Reducer(initialState, actions.fetchFromDB())
 

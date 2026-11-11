@@ -232,7 +232,7 @@ const ko: Dictionary<typeof en> = {
     standaloneExpansions: '독립 확장',
     miniExpansions: '미니 확장',
     promos: '프로모',
-    deselectByKeyword: '키워드로 선택 해제',
+    deselectByKeyword: '키워드별 선택 (선택한 카드/전체 공급처 카드)',
     showLanguageInfo: '언어 선택 안내 보기',
     content: {
       nemeses: '네메시스',

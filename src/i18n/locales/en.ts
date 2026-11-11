@@ -231,7 +231,7 @@ const en = {
     standaloneExpansions: 'Standalone Expansions',
     miniExpansions: 'Mini Expansions',
     promos: 'Promos',
-    deselectByKeyword: 'Deselect by Keyword',
+    deselectByKeyword: 'Select by keyword (selected/total supply cards)',
     showLanguageInfo: 'Show language select info',
     content: {
       nemeses: 'Nemeses',

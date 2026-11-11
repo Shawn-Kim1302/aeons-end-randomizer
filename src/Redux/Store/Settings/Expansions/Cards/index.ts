@@ -123,7 +123,7 @@ export const Reducer = reduceReducers(
 const getExpansionId = (_: unknown, props: { expansionId: string }) =>
   props.expansionId
 const getIdList = (_: unknown, props: { cardIds: string[] }) => props.cardIds
-const getKeyword = (_: unknown, props: { keyword: string}) => props.keyword
+const getKeyword = (_: unknown, props: { keyword: string }) => props.keyword
 
 // Memoized
 
@@ -159,10 +159,21 @@ const getSpellsByExpansionId = createSelector(
 
 const getSelectedCardIdsByKeyword = createSelector(
   [Content.selectors.getContent, Selected.selectors.getSelected, getKeyword],
-  ({ENG}, selectedIds, keyword) =>
-    Object.values(ENG).filter((card) => 
-      card.keywords.includes(keyword) && selectedIds.includes(card.id)
-    ).map((card) => card.id)
+  ({ ENG }, selectedIds, keyword) =>
+    Object.values(ENG)
+      .filter(
+        (card) =>
+          card.keywords.includes(keyword) && selectedIds.includes(card.id)
+      )
+      .map((card) => card.id)
+)
+
+const getCardIdsByKeyword = createSelector(
+  [Content.selectors.getContent, getKeyword],
+  ({ ENG }, keyword) =>
+    Object.values(ENG)
+      .filter((card) => card.keywords.includes(keyword))
+      .map((card) => card.id)
 )
 
 const getSelectedCards = createSelector(
@@ -211,6 +222,7 @@ export const selectors = {
   getRelicsByExpansionId,
   getSpellsByExpansionId,
   getSelectedCardIdsByKeyword,
+  getCardIdsByKeyword,
   getCardsByIdList,
   getSelectedCardsByExpansionId,
   getAllCardsOfExpansionSelected,
